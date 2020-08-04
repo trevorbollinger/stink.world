@@ -1,28 +1,25 @@
-#main{
-    text-align: center;
+body{
     background-color: black;
-    color: white;
+    background-image: url("background.jpeg");
+}
+
+.standard{
+    text-align: center;
+    background-color: #ffffff;
+    color: #000000;
     border-radius: 10px;
-    width:50%;
+    width:90%;
     text-align: center;
     margin: 0 auto 0 auto;
 }
+
+#main{
+
+}
 #nav{
-    text-align: center;
-    background-color: black;
-    width: 50%;
-    border-radius: 10px;
-    margin: 0 auto 0 auto;
-    margin-top: 10px;
-    color: white;
+
 }
 
 #footer{
-    text-align: center;
-    margin: 0 auto 0 auto;
-    margin-bottom: 10px;
-    background-color: black;
-    color: white;
-    border-radius: 10px;
-    width:50%
+
 }
