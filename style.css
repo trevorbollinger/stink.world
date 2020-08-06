@@ -1,22 +1,25 @@
 body{
     background-color: black;
-    background-image: url("background.jpeg");
+    background-image: url("resources/background.jpeg");
 }
 
 .standard{
     text-align: center;
-    background-color: #ffffff;
+    background-color: rgba(255,255,255,0.75);
     color: #000000;
     border-radius: 10px;
     width:90%;
-    text-align: center;
     margin: 0 auto 0 auto;
 }
 
-#main{
-
-}
 #nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+#main{
 
 }
 
