@@ -5,18 +5,22 @@ body{
 
 .standard{
     text-align: center;
-    background-color: rgba(255,255,255,0.75);
+    background-color: rgba(255,255,255,1);
     color: #000000;
-    border-radius: 10px;
-    width:90%;
+    border-radius: 0px;
+    width:97%;
     margin: 0 auto 0 auto;
+    padding: 5px;
+    font-family:'Product Sans Regular';
 }
 
-#nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
+.navbar{
+    text-align: center;
+    margin: 0 auto 0 auto;
+    font-family:'Product Sans Regular';
+    font-weight:normal;
+    font-size: 22px;
+    padding: 4px;
 }
 
 #main{
@@ -24,5 +28,5 @@ body{
 }
 
 #footer{
-
+    vertical-align: middle;
 }
