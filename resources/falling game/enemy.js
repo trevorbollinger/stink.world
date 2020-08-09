@@ -23,7 +23,7 @@ function enemy(x,y){
 		if(this.speed<2) this.speed=3;
 		if(this.y>550){
 			this.y=random(-60,-25);
-			this.x=random(0,canvas.width);
+			this.x=random(this.width*-1,canvas.width+this.width);
 		}
 	}
 }

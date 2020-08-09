@@ -1,18 +1,16 @@
 body{
-    background-color: black;
-    background-image: url("resources/background.jpeg");
+    background-color: #262626;
 }
 
 .standard{
-    text-align: center;
-    background-color: rgba(255,255,255,1);
-    color: #000000;
-    border-radius: 2px;
-    width:97%;
-    margin: 0 auto 0 auto;
-    padding: 5px;
+    background-color: rgba(255,255,255,0);
+    color: #dcdcdc;
+    padding: 20px;
+    width: 100%;
     font-family:'Product Sans Regular';
+    margin: 0 auto 0 auto;
 }
+
 
 .navbar{
     text-align: center;
@@ -20,13 +18,58 @@ body{
     font-family:'Product Sans Regular';
     font-weight:normal;
     font-size: 20px;
-    padding: 4px;
+
+    background-color: #343a40;
+    color: white;
+}
+
+.bg-dark{
+    background-color: #343a40;
+
+}
+
+.body-text{
+    width:100%
+}
+
+#falling-game{
+
+}
+
+#greeting{
+    float: left;
+    margin-left: 15%;
+    width: 35%;
+    height: 500px;
+    position: relative;
+
+}
+
+#game-container{
+    width: 35%;
+    height: 500px;
+    float: right;
+    margin-right: 15%;
+
 }
 
 #main{
-
+    float:left;
+    text-align: center;
 }
 
 #footer{
     vertical-align: middle;
+    text-align: center;
+    margin-top:20%;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }

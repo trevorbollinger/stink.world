@@ -42,7 +42,7 @@ function draw() {
 		textSize(30);
 		text("Score: " + Math.round(timeAlive), 190,470);
 		if(timeAlive>highscore) highscore=timeAlive;
-	} else if(gameEnd===true){
+		} else if(gameEnd===true){
 		player.isVisible=false;
 		for(e; e<en; e++){
 			enemies[e].isVisible=false;
