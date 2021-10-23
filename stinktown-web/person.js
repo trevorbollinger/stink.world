@@ -1,8 +1,8 @@
 function person(n){
 	this.height = 40
 	this.width = 40;
-	this.x = ((canvas.width/4) - (this.width / 2))+(this.width / 2)+random(-300,300);
-	this.y = ((canvas.height/4) - (this.height / 2)+(this.width / 2)+random(-300,300));
+	this.x = ((canvas.width/4) - (this.width))+(this.width)+random(-300,300);
+	this.y = ((canvas.height/4) - (this.height)+(this.width)+random(-300,300));
 
 	this.xvel = 0;
 	this.yvel = 0;
