@@ -51,15 +51,15 @@ function draw() {
 	}
 
 	fill("brown");
-	rect(0,(canvas.height/2) - menuBarHeight, (canvas.width) / 2, menuBarHeight);
+	rect(0,(canvas.height) - menuBarHeight, (canvas.width), menuBarHeight);
 
 	fill("white");
 	textSize(20);
-	text(":) "+controlling.name, buttonWidth*2 + padding*3,((canvas.height) / 2) - menuBarHeight/1.65);
-	text("Shit Urge: "+ controlling.shitUrge, buttonWidth*2 + padding*3, ((canvas.height) / 2) - menuBarHeight/4.56)
+	text(":) "+controlling.name, buttonWidth*2 + padding*3,((canvas.height)) - menuBarHeight/1.65);
+	text("Shit Urge: "+ controlling.shitUrge, buttonWidth*2 + padding*3, ((canvas.height)) - menuBarHeight/4.56)
 
 
-	slot1 = [padding, (((canvas.height)/2)-menuBarHeight+padding), buttonWidth, menuBarHeight-20];
+	slot1 = [padding, (((canvas.height))-menuBarHeight+padding), buttonWidth, menuBarHeight-20];
 	slot2 = [(padding*2)+slot1[2],slot1[1], slot1[2],slot1[3]]
 
 	testButton.update(slot1[0],slot1[1],slot1[2],slot1[3],"orange", "Change Player", 30, 26, 37, randomPlayer);
