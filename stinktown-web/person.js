@@ -39,7 +39,7 @@ function person(n){
 
 		//console.log(this.upV); //Debug
 
-		if(keyIsDown(UP_ARROW)){	//UP MOVEMENT
+		if(keyIsDown(UP_ARROW) || keyIsDown(87)){	//UP MOVEMENT
 			if(controlling.upV<controlling.maxSpeed){
 				controlling.upV+=controlling.accel;
 			}
@@ -49,7 +49,7 @@ function person(n){
 			}
 		}
 
-		if(keyIsDown(DOWN_ARROW)){ 	//DOWN MOVEMENT
+		if(keyIsDown(DOWN_ARROW) || keyIsDown(83)){ 	//DOWN MOVEMENT
 			if(controlling.downV<controlling.maxSpeed){
 				controlling.downV+=controlling.accel;
 			}
@@ -59,7 +59,7 @@ function person(n){
 			}
 		}
 
-		if(keyIsDown(LEFT_ARROW)){		//LEFT MOVEMENT
+		if(keyIsDown(LEFT_ARROW) || keyIsDown(65)){		//LEFT MOVEMENT
 			if(controlling.leftV<controlling.maxSpeed){
 				controlling.leftV+=controlling.accel;
 			}
@@ -69,7 +69,7 @@ function person(n){
 			}
 		}
 
-		if(keyIsDown(RIGHT_ARROW)){		//RIGHT MOVEMENT	
+		if(keyIsDown(RIGHT_ARROW) || keyIsDown(68)){		//RIGHT MOVEMENT	
 			if(controlling.rightV<controlling.maxSpeed){
 				controlling.rightV+=controlling.accel;
 			}
