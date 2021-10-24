@@ -15,6 +15,7 @@ function setup() {
 	nathan = new person("Nathan Madvig");
 
 	img = loadImage('images/mason.jpg');
+	g = loadImage('images/gihun.jpg');
 
 	//vars
 	controlling = mason;
@@ -71,6 +72,7 @@ function draw() {
 	testButton.update(slot1[0],slot1[1],slot1[2],slot1[3],"orange", "Change Player", 30, 26, 37, randomPlayer);
 	testButton2.update(slot2[0],slot2[1],slot2[2],slot2[3],"orange", "Shit", 30, 100, 37);
 	image(img, 0,0,500,500);
+	image(g, 500,0,500,500);
 
 }
 
