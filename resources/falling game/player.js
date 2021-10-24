@@ -38,7 +38,7 @@ function player(x,y,s){
 		if(this.rightV<0) this.rightV=0;
 
 		this.y-=this.upV;
-		this.y+=this.downV+0.6;;
+		this.y+=this.downV+0.6;
 		this.x-=this.leftV;
 		this.x+=this.rightV;
 

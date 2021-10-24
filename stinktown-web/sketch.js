@@ -1,3 +1,5 @@
+let img;
+
 function setup() {
 	createCanvas(1512,860);
 
@@ -11,6 +13,8 @@ function setup() {
 	jace = new person("Jace Blackman");
 	audra = new person("Audra Krebs");
 	nathan = new person("Nathan Madvig");
+
+	img = loadImage('images/mason.jpg');
 
 	//vars
 	controlling = mason;
@@ -26,7 +30,7 @@ function setup() {
 
 function draw() {
 	background("lightgray");
-
+	
 	for(i = 0; i <  people.length; i++){
 		if(people[i] != controlling){
 			people[i].inControl = false;
@@ -40,6 +44,8 @@ function draw() {
 	}
 
 	physics();
+
+	//print(controlling.yvel);
 
 
 	/* USER INTERFACE */
@@ -64,7 +70,7 @@ function draw() {
 
 	testButton.update(slot1[0],slot1[1],slot1[2],slot1[3],"orange", "Change Player", 30, 26, 37, randomPlayer);
 	testButton2.update(slot2[0],slot2[1],slot2[2],slot2[3],"orange", "Shit", 30, 100, 37);
-	
+	image(img, 0,0,500,500);
 
 }
 
