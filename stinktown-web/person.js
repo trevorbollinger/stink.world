@@ -24,6 +24,7 @@ function person(n){
 		noStroke();
 		fill("red");
 		rect(this.x,this.y,this.height,this.width)
+		image(this.image, this.x,this.y, this.width, this.height);
 
 		if(this.upV<0) this.upV=0;
 		if(this.downV<0) this.downV=0;
