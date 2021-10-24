@@ -54,6 +54,13 @@ function draw() {
 	for(i = 0; i<people.length; i++){
 		people[i].image = images[i];
 		people[i].update();
+
+		for(z = 0; z<people.length; z++){
+			if(people[i].isNear(people[z]) && people[i] != people[z]){
+				print(people[i].name + " is near " + people[z].name)
+			}
+		}
+
 	}
 
 	physics();
@@ -83,7 +90,6 @@ function draw() {
 
 	testButton.update(slot1[0],slot1[1],slot1[2],slot1[3],"orange", "Change Player", 30, 26, 37, randomPlayer);
 	testButton2.update(slot2[0],slot2[1],slot2[2],slot2[3],"orange", "Shit", 30, 100, 37);
-
 }
 
 function randomPlayer(){

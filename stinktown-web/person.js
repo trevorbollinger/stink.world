@@ -7,7 +7,7 @@ function person(n){
 	this.maxSpeed=10;
 
 	this.accel = 0.2;
-	this.decelModifier=0.75;
+	this.decelModifier=5;
 
 	this.upV = 0; //North Velocity
 	this.rightV = 0; //East Velocity	
@@ -19,6 +19,7 @@ function person(n){
 	this.health = 100;
 	this.money = 100;
 	this.shitUrge = 69;
+	this.interactionDistance = 60;
 
 	this.update = function(){
 		noStroke();
@@ -36,16 +37,13 @@ function person(n){
 		this.x-=this.leftV;
 		this.x+=this.rightV;
 
-
-		//console.log(this.upV); //Debug
-
 		if(keyIsDown(UP_ARROW) || keyIsDown(87)){	//UP MOVEMENT
 			if(controlling.upV<controlling.maxSpeed){
 				controlling.upV+=controlling.accel;
 			}
 		} else {
-			if(controlling.upV>0){
-				controlling.upV-=controlling.accel*controlling.decelModifier;
+			if(this.upV>0){
+				this.upV-=this.accel*this.decelModifier;
 			}
 		}
 
@@ -54,8 +52,8 @@ function person(n){
 				controlling.downV+=controlling.accel;
 			}
 		} else {
-			if(controlling.downV>0){
-				controlling.downV-=controlling.accel*controlling.decelModifier;
+			if(this.downV>0){
+				this.downV-=this.accel*this.decelModifier;
 			}
 		}
 
@@ -64,8 +62,8 @@ function person(n){
 				controlling.leftV+=controlling.accel;
 			}
 		} else {
-			if(controlling.leftV>0){
-				controlling.leftV-=controlling.accel*controlling.decelModifier;
+			if(this.leftV>0){
+				this.leftV-=this.accel*this.decelModifier;
 			}
 		}
 
@@ -74,10 +72,19 @@ function person(n){
 				controlling.rightV+=controlling.accel;
 			}
 		} else {
-			if(controlling.rightV>0){
-				controlling.rightV-=controlling.accel*controlling.decelModifier;
+			if(this.rightV>0){
+				this.rightV-=this.accel*this.decelModifier;
 			}
 		}
+	}
 
+	this.isNear = function(p){
+		this.distancex = this.x - p.x;
+		this.distancey = this.y - p.y;
+		if(this.distancex < this.interactionDistance && this.distancex > - this.interactionDistance){
+			if(this.distancey < this.interactionDistance && this.distancey > - this.interactionDistance){
+				return true;
+			}
+		}
 	}
 }
