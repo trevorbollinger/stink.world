@@ -2,6 +2,7 @@ let img;
 
 function setup() {
 	createCanvas(1512,860);
+	pixelDensity(1);
 
 	//people
 	trevor = new person("Trevor Bollinger");
@@ -28,7 +29,7 @@ function setup() {
 
 
 	//vars
-	controlling = mason;
+	controlling = trevor;
 	people = [trevor, andrew, jared, bayley, mason, aj, jace, audra, nathan];
 	images = [trevorImg, andrewImg, jaredImg, bayleyImg, masonImg, ajImg, jaceImg, audraImg, nathanImg];
 	debug = false;
@@ -42,7 +43,23 @@ function setup() {
 
 function draw() {
 	background("lightgray");
-	
+
+
+	fill("green");
+	rect(100-controlling.xc, 100-controlling.yc ,250, 175);
+	fill("white");
+	text("cum store", 100-controlling.xc+40, 100-controlling.yc+100);
+
+	for(i = 0; i<people.length; i++){
+		people[i].image = images[i];
+		
+		
+		if(people[i].truex > controlling.xc){
+			people[i].update();
+		}
+		
+	}
+
 	for(i = 0; i <  people.length; i++){
 		if(people[i] != controlling){
 			people[i].inControl = false;
@@ -51,24 +68,13 @@ function draw() {
 		}
 	}
 
-	for(i = 0; i<people.length; i++){
-		people[i].image = images[i];
-		people[i].update();
-
-		for(z = 0; z<people.length; z++){
-			if(people[i].isNear(people[z]) && people[i] != people[z]){
-				print(people[i].name + " is near " + people[z].name)
-			}
-		}
-
-	}
+	
 
 	physics();
 
-	//print(controlling.yvel);
-
-
 	/* USER INTERFACE */
+
+	noStroke();
 
 	if(debug==true){
 		fill("white");
@@ -81,7 +87,7 @@ function draw() {
 
 	fill("white");
 	textSize(20);
-	text(":) "+controlling.name, buttonWidth*2 + padding*3,((canvas.height)) - menuBarHeight/1.65);
+	text(":) " + controlling.name + " (" + Math.round(controlling.truex) + ", " + Math.round(controlling.truey) + ")", buttonWidth*2 + padding*3,((canvas.height)) - menuBarHeight/1.65);
 	text("Shit Urge: "+ controlling.shitUrge, buttonWidth*2 + padding*3, ((canvas.height)) - menuBarHeight/4.56)
 
 
