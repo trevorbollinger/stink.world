@@ -56,7 +56,7 @@ function person(n){
 
 		if(this.highlighted == true){
 			fill("white");
-			rect((this.x-controlling.xc)-this.strokeWidth, (this.y-controlling.yc)-this.strokeWidth, this.width+(this.strokeWidth*2), this.height+(this.strokeWidth*2));
+			rect((this.truex-controlling.xc)-this.strokeWidth, (this.truey-controlling.yc)-this.strokeWidth, this.width+(this.strokeWidth*2), this.height+(this.strokeWidth*2));
 		}
 
 		fill("blue");
@@ -66,8 +66,8 @@ function person(n){
 			image(this.image, this.x,this.y,this.height,this.width);
 
 		} else {
-			rect(this.x-controlling.xc,this.y-controlling.yc,this.height,this.width);
-			image(this.image, this.x-controlling.xc,this.y-controlling.yc,this.height,this.width);
+			rect(this.truex-controlling.xc,this.tryey-controlling.yc,this.height,this.width);
+			image(this.image, this.truex-controlling.xc,this.truey-controlling.yc,this.height,this.width);
 		}
 
 		
@@ -80,11 +80,14 @@ function person(n){
 		if(this.leftV<0) this.leftV=0;
 		if(this.rightV<0) this.rightV=0;
 
-		if(this.x < this.edgeDistance) this.x = this.edgeDistance;
-		if(this.x > canvas.width - this.edgeDistance) this.x = canvas.width - this.edgeDistance;
-		if(this.y < this.edgeDistance) this.y = this.edgeDistance;
-		if(this.y > canvas.height - this.edgeDistance - menuBarHeight) this.y = canvas.height - this.edgeDistance- menuBarHeight;
 
+		if(this == controlling){
+			if(this.x < this.edgeDistance) this.x = this.edgeDistance;
+			if(this.x > canvas.width - this.edgeDistance) this.x = canvas.width - this.edgeDistance;
+			if(this.y < this.edgeDistance) this.y = this.edgeDistance;
+			if(this.y > canvas.height - this.edgeDistance - menuBarHeight) this.y = canvas.height - this.edgeDistance- menuBarHeight;
+		}
+		
 
 		if(this.y > this.edgeDistance){
 			this.y -= this.upV;
@@ -155,8 +158,8 @@ function person(n){
 	}
 
 	this.isNear = function(p){
-		this.distancex = this.x - p.x+controlling.xc;
-		this.distancey = this.y - p.y+controlling.yc;
+		this.distancex = this.x - p.truex+controlling.xc;
+		this.distancey = this.y - p.truey+controlling.yc;
 		if(this.distancex < this.interactionDistance && this.distancex > -1*this.interactionDistance && this != p){
 			if(this.distancey < this.interactionDistance && this.distancey > -1*this.interactionDistance){
 				return true;

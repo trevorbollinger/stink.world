@@ -1,5 +1,9 @@
 let img;
 
+function preload(){
+	fart = loadSound('sounds/fart.mp3');
+}
+
 function setup() {
 	createCanvas(1512,860);
 	pixelDensity(1);
@@ -27,6 +31,8 @@ function setup() {
 
 	defaultImg = loadImage('images/gihun.jpg');
 
+	
+
 
 	//vars
 	controlling = trevor;
@@ -52,11 +58,7 @@ function draw() {
 
 	for(i = 0; i<people.length; i++){
 		people[i].image = images[i];
-		
-		
-		if(people[i].truex > controlling.xc){
-			people[i].update();
-		}
+		people[i].update();
 		
 	}
 
@@ -95,9 +97,14 @@ function draw() {
 	slot2 = [(padding*2)+slot1[2],slot1[1], slot1[2],slot1[3]]
 
 	testButton.update(slot1[0],slot1[1],slot1[2],slot1[3],"orange", "Change Player", 30, 26, 37, randomPlayer);
-	testButton2.update(slot2[0],slot2[1],slot2[2],slot2[3],"orange", "Shit", 30, 100, 37);
+	testButton2.update(slot2[0],slot2[1],slot2[2],slot2[3],"orange", "Shit", 30, 100, 37, playFart);
 }
 
 function randomPlayer(){
 	controlling = random(people);
 }
+
+function playFart(){
+	fart.play();
+}
+
