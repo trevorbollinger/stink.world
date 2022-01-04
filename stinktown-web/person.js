@@ -24,17 +24,17 @@ function person(n){
 	this.alive = true;
 	this.health = 100;
 	this.money = 100;
-	this.shitUrge = 69;
-	this.interactionDistance = 60;
+	this.shitUrge = random(0,75);
+	this.interactionDistance = 50;
 	this.strokeWidth = 5;
 	this.highlighted = false;
 	this.nearSomeone = false;
 	this.edgeDistance = 50;
+	this.location;
 
 	this.update = function(){
 		this.truex = this.x+this.xc;
 		this.truey = this.y+this.yc;
-		noStroke();
 
 		for(q=0; q<people.length; q++){
 
@@ -44,6 +44,9 @@ function person(n){
 
 			if(controlling.isNear(people[q])){
 				people[q].highlighted = true;
+
+
+
 			} else {
 				people[q].highlighted = false;
 			}
@@ -66,54 +69,34 @@ function person(n){
 			image(this.image, this.x,this.y,this.height,this.width);
 
 		} else {
-			rect(this.truex-controlling.xc,this.tryey-controlling.yc,this.height,this.width);
+			fill("red");
+			rect(this.truex-controlling.xc,this.truey-controlling.yc,this.height,this.width);
 			image(this.image, this.truex-controlling.xc,this.truey-controlling.yc,this.height,this.width);
 		}
-
-		
-
-		
-
 
 		if(this.upV<0) this.upV=0;
 		if(this.downV<0) this.downV=0;
 		if(this.leftV<0) this.leftV=0;
 		if(this.rightV<0) this.rightV=0;
 
-
 		if(this == controlling){
 			if(this.x < this.edgeDistance) this.x = this.edgeDistance;
-			if(this.x > canvas.width - this.edgeDistance) this.x = canvas.width - this.edgeDistance;
+			if(this.x > canvas.width - this.edgeDistance - this.width) this.x = canvas.width - this.edgeDistance - this.width;
 			if(this.y < this.edgeDistance) this.y = this.edgeDistance;
-			if(this.y > canvas.height - this.edgeDistance - menuBarHeight) this.y = canvas.height - this.edgeDistance- menuBarHeight;
+			if(this.y > canvas.height - this.edgeDistance - menuBarHeight - this.height) this.y = canvas.height - this.edgeDistance- menuBarHeight - this.width;
 		}
 		
+		if(this.y > this.edgeDistance) this.y -= this.upV;
+		else this.yc -= this.upV;
+			
+		if(this.y < canvas.height - this.edgeDistance - menuBarHeight - this.height) this.y+=this.downV;
+		else this.yc+=this.downV;
+			
+		if(this.x > this.edgeDistance) this.x-=this.leftV;
+		else this.xc-=this.leftV;
 
-		if(this.y > this.edgeDistance){
-			this.y -= this.upV;
-		} else {
-			this.yc -= this.upV;
-		}
-
-		if(this.y < canvas.height - this.edgeDistance - menuBarHeight){
-			this.y+=this.downV;
-		} else {
-			this.yc+=this.downV;
-		}
-
-		if(this.x > this.edgeDistance) {
-			this.x-=this.leftV;
-		} else {
-			this.xc-=this.leftV;
-		}
-
-		if(this.x < canvas.width - this.edgeDistance){
-			this.x+=this.rightV;
-		} else {
-			this.xc+=this.rightV;
-		}
-
-		
+		if(this.x < canvas.width - this.edgeDistance - this.width) this.x+=this.rightV;	
+		else this.xc+=this.rightV;
 
 
 		if(keyIsDown(UP_ARROW) || keyIsDown(87)){	//UP MOVEMENT
@@ -157,17 +140,40 @@ function person(n){
 		}
 	}
 
-	this.isNear = function(p){
+	this.isNear = function(o2){
+		/* legacy
 		this.distancex = this.x - p.truex+controlling.xc;
 		this.distancey = this.y - p.truey+controlling.yc;
 		if(this.distancex < this.interactionDistance && this.distancex > -1*this.interactionDistance && this != p){
 			if(this.distancey < this.interactionDistance && this.distancey > -1*this.interactionDistance){
-				return true;
+				//return true;
 			} else {
-				return false;
+				//return false;
 			}
+		} else {
+			//return false;
+		} */
+
+		if(this.truex+this.width > o2.truex-this.interactionDistance &&
+		   this.truey+this.height> o2.truey-this.interactionDistance &&
+		   this.truey<o2.truey+o2.height+this.interactionDistance &&
+		   this.truex<o2.truex+o2.width+this.interactionDistance &&
+		   this != o2){
+			return true;
 		} else {
 			return false;
 		}
+
+	}
+
+	this.shit = function(){
+		if(controlling.location.shittable == true){
+			controlling.shitUrge=0;
+		}
 	}
 }
+
+
+
+
+

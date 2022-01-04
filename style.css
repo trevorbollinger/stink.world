@@ -10,7 +10,13 @@ body{
     font-family:'Product Sans Regular';
     margin: 0 auto 0 auto;
 }
+iframe:focus { 
+  outline: none;
+}
 
+iframe[seamless] { 
+  display: block;
+}
 
 .navbar{
     text-align: center;

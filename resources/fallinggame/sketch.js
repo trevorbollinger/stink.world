@@ -1,6 +1,7 @@
 function setup() {
 	en = 5;
 	var canvas = createCanvas(500,500);
+	pixelDensity(1);
 	canvas.parent("falling-game");
 	player = new player(200,200,13);
 	enemies = [];
