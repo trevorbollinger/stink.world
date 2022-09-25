@@ -1,18 +1,7 @@
 let img;
 
-function setup() {
-	createCanvas(1512,860);
-
-	//people
-	trevor = new person("Trevor Bollinger");
-	andrew = new person("Andrew Smith");
-	jared = new person("Jared Koelzer");
-	bayley = new person("Bayley Haddix");
-	mason = new person("Mason Siragusa");
-	aj = new person("AJ Siragusa");
-	jace = new person("Jace Blackman");
-	audra = new person("Audra Krebs");
-	nathan = new person("Nathan Madvig");
+function preload(){
+	fart = loadSound('sounds/fart.mp3');
 
 	trevorImg = loadImage('images/trevor.jpg');
 	andrewImg = loadImage('images/andrew.jpg');
@@ -23,75 +12,146 @@ function setup() {
 	jaceImg = loadImage('images/jace.jpg');
 	audraImg = loadImage('images/audra.jpg');
 	nathanImg = loadImage('images/nathan.jpg');
-
 	defaultImg = loadImage('images/gihun.jpg');
 
+	applebeesImg = loadImage('images/applebees.jpeg');
+}
 
-	//vars
-	controlling = mason;
-	people = [trevor, andrew, jared, bayley, mason, aj, jace, audra, nathan];
-	images = [trevorImg, andrewImg, jaredImg, bayleyImg, masonImg, ajImg, jaceImg, audraImg, nathanImg];
-	debug = false;
-	menuBarHeight = 75;
-	padding = 10;
+function setup() {
+	createCanvas(1512,860);
+	pixelDensity(1);
+
+	//people
+	aj = new person("AJ Siragusa");
+	andrew = new person("Andrew Smith");
+	audra = new person("Audra Krebs");
+	bayley = new person("Bayley Haddix");
+	jace = new person("Jace Blackman");
+	jared = new person("Jared Koelzer");
+	mason = new person("Mason Siragusa");
+	nathan = new person("Nathan Madvig");
+	trevor = new person("Trevor Bollinger");
+
+	people = [aj, andrew, audra, bayley, jace, jared, mason, nathan, trevor]
+	images = [ajImg, andrewImg, audraImg,bayleyImg,jaceImg,jaredImg,masonImg,nathanImg,trevorImg]
+
+	controlling = random(people);
+
+	//colors
+	backgroundColor = '#2b2d42';
+	buttonColor = '#818CA1';
+	buttonMouseOverColor = '#757E93';
+	buttonPressedColor = '#5C6378';
+
+	//buttons
 	buttonWidth = (550/2)-10;
 
-	testButton= new button();
-	testButton2= new button();
+	changePlayerButton= new button();
+	shitButton= new button();
+	menuButton = new button();
+	backButton = new button();
+
+	ajButton = new button();
+	andrewButton = new button();
+	audraButton = new button();
+	bayleyButton = new button();
+	jaceButton = new button();
+	jaredButton = new button();
+	masonButton = new button();
+	nathanButton = new button();
+	trevorButton = new button();
+
+	//buildings
+	applebees = new building(100,100,250,175, applebeesImg, "Applebees");
+	square = new building(1,1,1,1, defaultImg, "Square");
+
+	for(j = 0; j < people.length; j++){
+		people[j].locaiton = square;
+	}
+
+	//vars
+	currentScene = "main";
+	debug = true;
+	menuBarHeight = 75;
+	padding = 10;
+	
+	//UI
+	slot1 = [padding, (((canvas.height))-menuBarHeight+padding), buttonWidth, menuBarHeight-(padding*2)];
+	slot2 = [(padding*2)+slot1[2],slot1[1], slot1[2],slot1[3]]
 }
 
 function draw() {
-	background("lightgray");
+	noStroke();
 	
-	for(i = 0; i <  people.length; i++){
-		if(people[i] != controlling){
-			people[i].inControl = false;
-		} else {
-			people[i].inControl = true;
-		}
+	if(currentScene == "main"){
+		main();
+	} else if(currentScene == "changePlayer"){
+		changePlayer();
 	}
-
-	for(i = 0; i<people.length; i++){
-		people[i].image = images[i];
-		people[i].update();
-
-		for(z = 0; z<people.length; z++){
-			if(people[i].isNear(people[z]) && people[i] != people[z]){
-				print(people[i].name + " is near " + people[z].name)
-			}
-		}
-
-	}
-
-	physics();
-
-	//print(controlling.yvel);
-
-
-	/* USER INTERFACE */
 
 	if(debug==true){
 		fill("white");
-		textSize(15)
-		text(mouseX+", "+mouseY, mouseX+30, mouseY-10); 
+		textSize(20)
+		//text(mouseX+", "+mouseY, mouseX+30, mouseY-10); 
+		text(currentScene, 10,20);
+		//text(controlling.location.name,10,50);
 	}
 
-	fill("brown");
-	rect(0,(canvas.height) - menuBarHeight, (canvas.width), menuBarHeight);
+	//print(controlling.shitUrge);
 
-	fill("white");
-	textSize(20);
-	text(":) "+controlling.name, buttonWidth*2 + padding*3,((canvas.height)) - menuBarHeight/1.65);
-	text("Shit Urge: "+ controlling.shitUrge, buttonWidth*2 + padding*3, ((canvas.height)) - menuBarHeight/4.56)
-
-
-	slot1 = [padding, (((canvas.height))-menuBarHeight+padding), buttonWidth, menuBarHeight-20];
-	slot2 = [(padding*2)+slot1[2],slot1[1], slot1[2],slot1[3]]
-
-	testButton.update(slot1[0],slot1[1],slot1[2],slot1[3],"orange", "Change Player", 30, 26, 37, randomPlayer);
-	testButton2.update(slot2[0],slot2[1],slot2[2],slot2[3],"orange", "Shit", 30, 100, 37);
+	//print(controlling.location.name);
+	
 }
 
 function randomPlayer(){
 	controlling = random(people);
 }
+
+function mainScreen(){
+	fart.play();
+	currentScene = "main";
+}
+
+function openChangePlayer(){
+	currentScene = "changePlayer";
+}
+
+function switchAJ(){
+	controlling = aj;
+	mainScreen();
+}
+function switchAndrew(){
+	controlling = andrew;
+	mainScreen();
+}
+function switchAudra(){
+	controlling = audra;
+	mainScreen();
+}
+function switchBayley(){
+	controlling = bayley;
+	mainScreen();
+}
+function switchJace(){
+	controlling = jace;
+	mainScreen();
+}
+function switchJared(){
+	controlling = jared;
+	mainScreen();
+}
+function switchMason(){
+	controlling = mason;
+	mainScreen();
+}
+function switchNathan(){
+	controlling = nathan;
+	mainScreen();
+}
+function switchTrevor(){
+	controlling = trevor;
+	mainScreen();
+}
+
+
+
