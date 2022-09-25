@@ -50,6 +50,8 @@ function person(n){
 			} else {
 				people[q].highlighted = false;
 			}
+
+			people[q].shitUrge+=0.000008;
 		}
 
 		if(this == controlling){

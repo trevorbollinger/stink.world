@@ -15,7 +15,7 @@ function changePlayer(){
 	trevorButton.update(slot1[0], (slot1[1]-3*(slot1[3])+padding*8) , slot1[2], slot1[3], buttonColor, "Trevor", 30, 26, 37, switchTrevor);
 }
 
-function main(){
+function mainscene(){
 	background("green");
 
 	square.update();

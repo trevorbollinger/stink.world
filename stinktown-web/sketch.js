@@ -95,7 +95,7 @@ function draw() {
 	noStroke();
 	
 	if(currentScene == "main"){
-		main();
+		mainscene();
 	} else if(currentScene == "changePlayer"){
 		changePlayer();
 	}
@@ -105,7 +105,7 @@ function draw() {
 		textSize(20)
 		text(mouseX+", "+mouseY, mouseX+30, mouseY-10); 
 		text(currentScene, 10,20);
-		text(controlling.location.name,10,50);
+		//text(controlling.location.name,10,50);
 	}
 
 	//print(controlling.shitUrge);
