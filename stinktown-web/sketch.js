@@ -63,10 +63,14 @@ function setup() {
 
 	//buildings
 	applebees = new building(100,100,250,175, applebeesImg, "Applebees");
-	square = new building(1,1,1,1, defaultImg, "Square");
+	applebees.shittable = true;
+	square = new building((canvas.width/2)-300-controlling.xc, (canvas.height/2)-1100-controlling.yc, 600, 600, defaultImg, "Square");
+	square.shittable = false;
+
 
 	for(j = 0; j < people.length; j++){
 		people[j].locaiton = square;
+		controlling.location = square;
 	}
 
 	//vars
@@ -74,6 +78,7 @@ function setup() {
 	debug = true;
 	menuBarHeight = 75;
 	padding = 10;
+	shitmsg = false;
 	
 	//UI
 	slot1 = [padding, (((canvas.height))-menuBarHeight+padding), buttonWidth, menuBarHeight-(padding*2)];
@@ -92,7 +97,7 @@ function draw() {
 	if(debug==true){
 		fill("white");
 		textSize(20)
-		//text(mouseX+", "+mouseY, mouseX+30, mouseY-10); 
+		text(mouseX+", "+mouseY, mouseX+30, mouseY-10); 
 		text(currentScene, 10,20);
 		//text(controlling.location.name,10,50);
 	}

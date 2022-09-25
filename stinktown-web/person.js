@@ -1,5 +1,5 @@
 function person(n){
-	this.height = 40
+	this.height = 40;
 	this.width = 40;
 	this.x = ((canvas.width/2) - (this.width))+(this.width)+random(-300,300);
 	this.y = ((canvas.height/2) - (this.height)+(this.width)+random(-300,300));
@@ -169,6 +169,9 @@ function person(n){
 	this.shit = function(){
 		if(controlling.location.shittable == true){
 			controlling.shitUrge=0;
+			shitmsg = false;
+		} else {
+			shitmsg = true;
 		}
 	}
 }

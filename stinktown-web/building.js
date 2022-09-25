@@ -6,7 +6,7 @@ function building(x,y,width,height, img,n){
 	this.img = img;
 	this.truex = x;
 	this.truey = y;
-	this.shittable = true;
+	this.shittable;
 	this.name = n;
 
 	this.update = function (){
@@ -23,10 +23,9 @@ function building(x,y,width,height, img,n){
 		//text("cum", 200,200);
 
 		if(controlling.isNear(this)){
+			print("fard");
 			controlling.location = this;
-		} else {
-			controlling.location = square;
-		}
+		} 
 
 	}
 

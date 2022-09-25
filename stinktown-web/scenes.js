@@ -4,8 +4,8 @@ function changePlayer(){
 	
 	changePlayerButton.update(slot1[0],slot1[1],slot1[2],slot1[3],"buttonColor", "back", 30, 26, 37, mainScreen);
 
-	ajButton.update(    slot1[0], (slot1[1]-(11*(slot1[3]))) , slot1[2], slot1[3], buttonColor, "AJ", 30, 26, 37, switchAJ);
-	andrewButton.update(slot1[0], (slot1[1]-10*(slot1[3])+padding) , slot1[2], slot1[3], buttonColor, "Andrew", 30, 26, 37, switchAndrew);
+	ajButton.update(    slot1[0], (slot1[1]-(11*(slot1[3]))) 		, slot1[2], slot1[3], buttonColor, "AJ", 30, 26, 37, switchAJ);
+	andrewButton.update(slot1[0], (slot1[1]-10*(slot1[3])+padding)  , slot1[2], slot1[3], buttonColor, "Andrew", 30, 26, 37, switchAndrew);
 	audraButton.update( slot1[0], (slot1[1]-9*(slot1[3])+padding*2) , slot1[2], slot1[3], buttonColor, "Audra", 30, 26, 37, switchAudra);
 	bayleyButton.update(slot1[0], (slot1[1]-8*(slot1[3])+padding*3) , slot1[2], slot1[3], buttonColor, "Bayley", 30, 26, 37, switchBayley);
 	jaceButton.update(  slot1[0], (slot1[1]-7*(slot1[3])+padding*4) , slot1[2], slot1[3], buttonColor, "Jace", 30, 26, 37, switchJace);
@@ -23,7 +23,7 @@ function main(){
 
 	//square
 	fill("lightgrey");
-	rect((canvas.width/2)-300-controlling.xc, (canvas.height/2)-300-controlling.yc, 600, 600);
+	//rect((canvas.width/2)-300-controlling.xc, (canvas.height/2)-300-controlling.yc, 600, 600);
 	
 	
 	for(i = 0; i<people.length; i++){
@@ -44,8 +44,18 @@ function main(){
 
 	fill("white");
 	textSize(20);
-	text(":) " + controlling.name + " (" + Math.round(controlling.truex) + ", " + Math.round(controlling.truey) + ")", buttonWidth*2 + padding*3,((canvas.height)) - menuBarHeight/1.65);
+	text(":) " + controlling.name + " (" + Math.round(controlling.truex) + ", "+
+	Math.round(controlling.truey) + ")", buttonWidth*2 + padding*3,((canvas.height)) - menuBarHeight/1.65);
+
 	text("Shit Urge: "+ controlling.shitUrge + "%", buttonWidth*2 + padding*3, ((canvas.height)) - menuBarHeight/4.56)
+
+	if(shitmsg == true){
+		textSize(40);
+		text("GO TO APPLEBEES!!!",  buttonWidth*4 + padding*3,((canvas.height)) - menuBarHeight/2.65);
+	}
+
+	
+
 
 
 
