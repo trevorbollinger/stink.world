@@ -25,7 +25,9 @@ function building(x,y,width,height, img,n){
 		if(controlling.isNear(this)){
 			print("fard");
 			controlling.location = this;
-		} 
+		} else {
+			controlling.location = nb;
+		}
 
 	}
 

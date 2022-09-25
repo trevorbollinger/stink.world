@@ -30,7 +30,7 @@ function person(n){
 	this.highlighted = false;
 	this.nearSomeone = false;
 	this.edgeDistance = 50;
-	this.location;
+	this.location = n;
 
 	this.update = function(){
 		this.truex = this.x+this.xc;

@@ -67,6 +67,12 @@ function setup() {
 	square = new building((canvas.width/2)-300-controlling.xc, (canvas.height/2)-1100-controlling.yc, 600, 600, defaultImg, "Square");
 	square.shittable = false;
 
+	squaree = new building((canvas.width/2)-300-controlling.xc, (canvas.height/2)-0-controlling.yc, 600, 600, defaultImg, "Square");
+	squaree.shittable = false;
+
+	nb = new building(-100000, -100000, 0, 0, defaultImg, "n");
+	nb.shittable = false;
+
 
 	for(j = 0; j < people.length; j++){
 		people[j].locaiton = square;
@@ -99,7 +105,7 @@ function draw() {
 		textSize(20)
 		text(mouseX+", "+mouseY, mouseX+30, mouseY-10); 
 		text(currentScene, 10,20);
-		//text(controlling.location.name,10,50);
+		text(controlling.location.name,10,50);
 	}
 
 	//print(controlling.shitUrge);

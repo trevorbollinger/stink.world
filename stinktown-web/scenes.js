@@ -18,8 +18,9 @@ function changePlayer(){
 function main(){
 	background("green");
 
-	applebees.update();
 	square.update();
+	squaree.update();
+	applebees.update();
 
 	//square
 	fill("lightgrey");
