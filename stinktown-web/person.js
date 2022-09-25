@@ -56,12 +56,18 @@ function person(n){
 
 		if(this == controlling){
 			fill("red");
-			rect(this.x-this.strokeWidth, this.y-this.strokeWidth, this.width+(this.strokeWidth*2), this.height+(this.strokeWidth*2));
+			rect(this.x-this.strokeWidth,
+				 this.y-this.strokeWidth,
+				 this.width+(this.strokeWidth*2),
+				 this.height+(this.strokeWidth*2));
 		}
 
 		if(this.highlighted == true){
 			fill("white");
-			rect((this.truex-controlling.xc)-this.strokeWidth, (this.truey-controlling.yc)-this.strokeWidth, this.width+(this.strokeWidth*2), this.height+(this.strokeWidth*2));
+			rect((this.truex-controlling.xc)-this.strokeWidth,
+				 (this.truey-controlling.yc)-this.strokeWidth,
+				  this.width+(this.strokeWidth*2), 
+				  this.height+(this.strokeWidth*2));
 		}
 
 		fill("blue");
@@ -72,8 +78,12 @@ function person(n){
 
 		} else {
 			fill("red");
-			rect(this.truex-controlling.xc,this.truey-controlling.yc,this.height,this.width);
-			image(this.image, this.truex-controlling.xc,this.truey-controlling.yc,this.height,this.width);
+			rect(this.truex-controlling.xc,
+				 this.truey-controlling.yc,
+				 this.height,this.width);
+
+			image(this.image, this.truex-controlling.xc,
+				  this.truey-controlling.yc,this.height,this.width);
 		}
 
 		if(this.upV<0) this.upV=0;
@@ -81,24 +91,39 @@ function person(n){
 		if(this.leftV<0) this.leftV=0;
 		if(this.rightV<0) this.rightV=0;
 
-		if(this == controlling){
-			if(this.x < this.edgeDistance) this.x = this.edgeDistance;
-			if(this.x > canvas.width - this.edgeDistance - this.width) this.x = canvas.width - this.edgeDistance - this.width;
-			if(this.y < this.edgeDistance) this.y = this.edgeDistance;
-			if(this.y > canvas.height - this.edgeDistance - menuBarHeight - this.height) this.y = canvas.height - this.edgeDistance- menuBarHeight - this.width;
+		if (this == controlling){
+			if (this.x < this.edgeDistance)
+				this.x = this.edgeDistance;
+
+			if (this.x > canvas.width - this.edgeDistance - this.width)
+				this.x = canvas.width - this.edgeDistance - this.width;
+
+			if (this.y < this.edgeDistance)
+				this.y = this.edgeDistance;
+
+			if (this.y > canvas.height - this.edgeDistance - menuBarHeight - this.height)
+				this.y = canvas.height - this.edgeDistance- menuBarHeight - this.width;
 		}
 		
-		if(this.y > this.edgeDistance) this.y -= this.upV;
-		else this.yc -= this.upV;
+		if (this.y > this.edgeDistance)
+			this.y -= this.upV;
+		else 
+			this.yc -= this.upV;
 			
-		if(this.y < canvas.height - this.edgeDistance - menuBarHeight - this.height) this.y+=this.downV;
-		else this.yc+=this.downV;
+		if (this.y < canvas.height - this.edgeDistance - menuBarHeight - this.height)
+			this.y+=this.downV;
+		else
+			this.yc+=this.downV;
 			
-		if(this.x > this.edgeDistance) this.x-=this.leftV;
-		else this.xc-=this.leftV;
+		if (this.x > this.edgeDistance)
+			this.x-=this.leftV;
+		else 
+			this.xc-=this.leftV;
 
-		if(this.x < canvas.width - this.edgeDistance - this.width) this.x+=this.rightV;	
-		else this.xc+=this.rightV;
+		if (this.x < canvas.width - this.edgeDistance - this.width)
+			this.x+=this.rightV;	
+		else 
+			this.xc+=this.rightV;
 
 
 		if(keyIsDown(UP_ARROW) || keyIsDown(87)){	//UP MOVEMENT
@@ -156,11 +181,11 @@ function person(n){
 			//return false;
 		} */
 
-		if(this.truex+this.width > o2.truex-this.interactionDistance &&
-		   this.truey+this.height> o2.truey-this.interactionDistance &&
-		   this.truey<o2.truey+o2.height+this.interactionDistance &&
-		   this.truex<o2.truex+o2.width+this.interactionDistance &&
-		   this != o2){
+		if (this.truex+this.width > o2.truex-this.interactionDistance &&
+			this.truey+this.height> o2.truey-this.interactionDistance &&
+			this.truey<o2.truey+o2.height+this.interactionDistance &&
+			this.truex<o2.truex+o2.width+this.interactionDistance &&
+			this != o2){
 			return true;
 		} else {
 			return false;
