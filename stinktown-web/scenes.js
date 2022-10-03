@@ -15,21 +15,33 @@ function changePlayer(){
 	trevorButton.update(slot1[0], (slot1[1]-3*(slot1[3])+padding*8) , slot1[2], slot1[3], buttonColor, "Trevor", 30, 26, 37, switchTrevor);
 }
 
+
+
 function mainscene(){
+
+	BORDER = 2000;
+
 	background("green");
+
+	for(q = -2*BORDER; q < BORDER*4; q+=2000){
+		//image(grassImg, q-controlling.xc, controlling.yc, 2000, 2000);
+		for(w = -2*BORDER; w < BORDER*4; w+=2000){
+			image(grassImg, q-controlling.xc, w-controlling.yc, 2000, 2000);
+		}
+	}
+
+	
 
 	square.update();
 	squaree.update();
 	applebees.update();
-
-	//square
-	fill("lightgrey");
-	//rect((canvas.width/2)-300-controlling.xc, (canvas.height/2)-300-controlling.yc, 600, 600);
-	
 	
 	for(i = 0; i<people.length; i++){
-		people[i].image = images[i];
-		people[i].update();
+		if(people[i].alive){
+			people[i].image = images[i];
+			people[i].update();
+		}
+		
 	}
 
 	for(i = 0; i <  people.length; i++){
@@ -38,28 +50,73 @@ function mainscene(){
 		} else {
 			people[i].inControl = true;
 		}
+
+		if(people[i].truex > BORDER-people[i].width){
+			people[i].x = canvas.width/2;
+		}
+
+		if(people[i].truey > BORDER-people[i].height){
+			people[i].y = canvas.height/2;
+		}
+
+		if(people[i].truex < -1*BORDER+people[i].width){
+			people[i].x = canvas.width/2;
+		}
+
+		if(people[i].truey < -1*BORDER+people[i].height){
+			people[i].y = canvas.height/2;
+		}
 	}
 
+	fill("black");
+	rect(BORDER-controlling.xc, -1*BORDER-controlling.yc, 50, BORDER*2); //right
+	rect(-1*BORDER-controlling.xc, -1*BORDER-controlling.yc, BORDER*2, 50); //top
+	rect(-1*BORDER-controlling.xc, -1*BORDER-controlling.yc, 50, BORDER*2); //left
+	rect(-1*BORDER-controlling.xc, BORDER-controlling.yc, BORDER*2+50, 50); //bottom
+
+
+	drawMenuBar();
+	
+}
+
+function drawMenuBar(){
 	fill(backgroundColor);
 	rect(0,(canvas.height) - menuBarHeight, (canvas.width), menuBarHeight);
-
-	fill("white");
-	textSize(20);
-	text(":) " + controlling.name + " (" + Math.round(controlling.truex) + ", "+
-	Math.round(controlling.truey) + ")", buttonWidth*2 + padding*3,((canvas.height)) - menuBarHeight/1.65);
-
-	text("Shit Urge: "+ controlling.shitUrge + "%", buttonWidth*2 + padding*3, ((canvas.height)) - menuBarHeight/4.56)
-
-	if(shitmsg == true){
-		textSize(40);
-		text("GO TO APPLEBEES!!!",  buttonWidth*4 + padding*3,((canvas.height)) - menuBarHeight/2.65);
-	}
-
 	
-
-
-
-
+	//Buttons
 	changePlayerButton.update(slot1[0],slot1[1],slot1[2],slot1[3], buttonColor, "Change Player", 30, 26, 37, openChangePlayer);
 	shitButton.update(slot2[0],slot2[1],slot2[2],slot2[3], buttonColor, "Shit", 30, 100, 37, controlling.shit);
+
+
+
+	//Bottom Right HUD
+	imgSize = menuBarHeight-(padding*2)
+	infoOne = controlling.name; //line one
+	infoTwo = "Shit Urge: " + Math.round(controlling.shitUrge) + "%";
+
+	//fill('rgba(100,100,0, 0.25)'); //rectangle of visualization
+	//rect(canvas.width/2+padding, menuBar + padding, canvas.width/2-(padding*3)-imgSize, menuBarHeight-(padding*2));
+	textSize(20);
+	fill("white");
+	text(infoOne, 
+		canvas.width-(padding*3)-imgSize-textWidth(infoOne), 
+		((canvas.height)) - menuBarHeight/1.65);
+
+	text(infoTwo, 
+		canvas.width-(padding*3)-imgSize-textWidth(infoTwo), 
+		canvas.height - (menuBarHeight/4.56));
+
+
+	image(controlling.image, canvas.width-imgSize-padding, menuBar+padding, imgSize, imgSize);
+
 }
+
+
+
+
+
+
+
+
+
+

@@ -18,12 +18,7 @@ function building(x,y,width,height, img,n){
 		this.truex = this.x;
 		this.truey = this.y;
 
-		textSize(20);
-		fill("red");
-		//text("cum", 200,200);
-
 		if(controlling.isNear(this)){
-			print("fard");
 			controlling.location = this;
 		} else {
 			controlling.location = nb;

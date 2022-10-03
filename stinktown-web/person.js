@@ -25,11 +25,12 @@ function person(n){
 	this.health = 100;
 	this.money = 100;
 	this.shitUrge = random(0,75);
-	this.interactionDistance = 50;
-	this.strokeWidth = 5;
+	this.shitIncrementer = 1/800
+	this.interactionDistance = 30;
+	this.strokeWidth = 2;
 	this.highlighted = false;
 	this.nearSomeone = false;
-	this.edgeDistance = 50;
+	this.edgeDistance = 70;
 	this.location = n;
 
 	this.update = function(){
@@ -51,8 +52,22 @@ function person(n){
 				people[q].highlighted = false;
 			}
 
-			people[q].shitUrge+=0.000008;
+			people[q].shitUrge+=people[q].shitIncrementer;
+
+			if(people[q].shitUrge >= 85 && people[q].shitUrge < 100){
+				toast.show(people[q].name + " is about to shit theirself!", 5);
+			}
+
+			if(people[q].shitUrge >= 100){
+				if(people[q].alive) boom.play();
+				toastd.show(people[q].name + " has shit their pants and died!", 5);
+				people[q].alive = false;
+				people[q].shitUrge = 100;
+			}
+
 		}
+
+
 
 		if(this == controlling){
 			fill("red");
@@ -195,10 +210,10 @@ function person(n){
 
 	this.shit = function(){
 		if(controlling.location.shittable == true){
+			fart.play();
 			controlling.shitUrge=0;
-			shitmsg = false;
 		} else {
-			shitmsg = true;
+			toast.show("GO TO APPLEBEES!!!", 5);
 		}
 	}
 }
