@@ -86,7 +86,7 @@ function setup() {
 
 	//vars
 	currentScene = "main";
-	debug = true;
+	debug = false;
 	menuBarHeight = 60;
 	menuBar = canvas.height - menuBarHeight;
 	padding = 5;
