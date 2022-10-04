@@ -4,13 +4,13 @@ function changePlayer(){
 	
 	changePlayerButton.update(slot1[0],slot1[1],slot1[2],slot1[3],"buttonColor", "back", 30, 26, 37, mainScreen);
 
-	ajButton.update(    slot1[0], (slot1[1]-(11*(slot1[3]))) 		, slot1[2], slot1[3], buttonColor, "AJ", 30, 26, 37, switchAJ);
+	ajButton.update(    slot1[0], (slot1[1]-(11*(slot1[3]))) 		, slot1[2], slot1[3], buttonColor, "AJ",     30, 26, 37, switchAJ    );
 	andrewButton.update(slot1[0], (slot1[1]-10*(slot1[3])+padding)  , slot1[2], slot1[3], buttonColor, "Andrew", 30, 26, 37, switchAndrew);
-	audraButton.update( slot1[0], (slot1[1]-9*(slot1[3])+padding*2) , slot1[2], slot1[3], buttonColor, "Audra", 30, 26, 37, switchAudra);
+	audraButton.update( slot1[0], (slot1[1]-9*(slot1[3])+padding*2) , slot1[2], slot1[3], buttonColor, "Audra",  30, 26, 37, switchAudra );
 	bayleyButton.update(slot1[0], (slot1[1]-8*(slot1[3])+padding*3) , slot1[2], slot1[3], buttonColor, "Bayley", 30, 26, 37, switchBayley);
-	jaceButton.update(  slot1[0], (slot1[1]-7*(slot1[3])+padding*4) , slot1[2], slot1[3], buttonColor, "Jace", 30, 26, 37, switchJace);
-	jaredButton.update( slot1[0], (slot1[1]-6*(slot1[3])+padding*5) , slot1[2], slot1[3], buttonColor, "Jared", 30, 26, 37, switchJared);
-	masonButton.update( slot1[0], (slot1[1]-5*(slot1[3])+padding*6) , slot1[2], slot1[3], buttonColor, "Mason", 30, 26, 37, switchMason);
+	jaceButton.update(  slot1[0], (slot1[1]-7*(slot1[3])+padding*4) , slot1[2], slot1[3], buttonColor, "Jace",   30, 26, 37, switchJace  );
+	jaredButton.update( slot1[0], (slot1[1]-6*(slot1[3])+padding*5) , slot1[2], slot1[3], buttonColor, "Jared",  30, 26, 37, switchJared );
+	masonButton.update( slot1[0], (slot1[1]-5*(slot1[3])+padding*6) , slot1[2], slot1[3], buttonColor, "Mason",  30, 26, 37, switchMason );
 	nathanButton.update(slot1[0], (slot1[1]-4*(slot1[3])+padding*7) , slot1[2], slot1[3], buttonColor, "Nathan", 30, 26, 37, switchNathan);
 	trevorButton.update(slot1[0], (slot1[1]-3*(slot1[3])+padding*8) , slot1[2], slot1[3], buttonColor, "Trevor", 30, 26, 37, switchTrevor);
 }
@@ -45,27 +45,21 @@ function mainscene(){
 	}
 
 	for(i = 0; i <  people.length; i++){
-		if(people[i] != controlling){
-			people[i].inControl = false;
-		} else {
-			people[i].inControl = true;
-		}
+		if(people[i] != controlling) people[i].inControl = false;
+		else people[i].inControl = true;
 
-		if(people[i].truex > BORDER-people[i].width){
+		if(people[i].truex > BORDER-people[i].width)
 			people[i].x = canvas.width/2;
-		}
 
-		if(people[i].truey > BORDER-people[i].height){
+		if(people[i].truey > BORDER-people[i].height)
 			people[i].y = canvas.height/2;
-		}
 
-		if(people[i].truex < -1*BORDER+people[i].width){
+		if(people[i].truex < -1*BORDER+people[i].width)
 			people[i].x = canvas.width/2;
-		}
-
-		if(people[i].truey < -1*BORDER+people[i].height){
+	
+		if(people[i].truey < -1*BORDER+people[i].height)
 			people[i].y = canvas.height/2;
-		}
+		
 	}
 
 	fill("black");
