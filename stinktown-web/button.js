@@ -3,7 +3,7 @@ function button(){
 	this.down=false;
 	this.used = false;
 
-	this.update = function(x,y,width,height,color,words,size,xp,yp,func){
+	this.update = function(x,y,width,height,color,words,size,xp,yp,func, id){
 		this.x=x;
 		this.y=y;
 		this.width=width;
@@ -36,7 +36,7 @@ function button(){
 		if(mouseOver(this) && mouseIsPressed && this.used == false){
 			this.used = true;
 
-			func();
+			func(id);
 		}
 	}
 }

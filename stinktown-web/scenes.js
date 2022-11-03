@@ -2,22 +2,22 @@ function changePlayer(){
 	fill(backgroundColor);
 	rect(slot1[0], slot1[1]-((slot1[3]) * people.length + (padding*people.length))-padding*3, slot1[2],slot1[3]+((20 + slot1[3]) * people.length), 10);
 	
-	changePlayerButton.update(slot1[0],slot1[1],slot1[2],slot1[3],"buttonColor", "back", 30, 26, 37, mainScreen);
+	changePlayerButton.update(slot1[0],slot1[1],slot1[2],slot1[3],"buttonColor", "back", 30, 26, 37, switchDisplayScene, controlling.scene);
 
-	ajButton.update(    slot1[0], (slot1[1]-(11*(slot1[3]))) 		, slot1[2], slot1[3], buttonColor, "AJ",     30, 26, 37, switchAJ    );
-	andrewButton.update(slot1[0], (slot1[1]-10*(slot1[3])+padding)  , slot1[2], slot1[3], buttonColor, "Andrew", 30, 26, 37, switchAndrew);
-	audraButton.update( slot1[0], (slot1[1]-9*(slot1[3])+padding*2) , slot1[2], slot1[3], buttonColor, "Audra",  30, 26, 37, switchAudra );
-	bayleyButton.update(slot1[0], (slot1[1]-8*(slot1[3])+padding*3) , slot1[2], slot1[3], buttonColor, "Bayley", 30, 26, 37, switchBayley);
-	jaceButton.update(  slot1[0], (slot1[1]-7*(slot1[3])+padding*4) , slot1[2], slot1[3], buttonColor, "Jace",   30, 26, 37, switchJace  );
-	jaredButton.update( slot1[0], (slot1[1]-6*(slot1[3])+padding*5) , slot1[2], slot1[3], buttonColor, "Jared",  30, 26, 37, switchJared );
-	masonButton.update( slot1[0], (slot1[1]-5*(slot1[3])+padding*6) , slot1[2], slot1[3], buttonColor, "Mason",  30, 26, 37, switchMason );
-	nathanButton.update(slot1[0], (slot1[1]-4*(slot1[3])+padding*7) , slot1[2], slot1[3], buttonColor, "Nathan", 30, 26, 37, switchNathan);
-	trevorButton.update(slot1[0], (slot1[1]-3*(slot1[3])+padding*8) , slot1[2], slot1[3], buttonColor, "Trevor", 30, 26, 37, switchTrevor);
+	ajButton.update(    slot1[0], (slot1[1]-(11*(slot1[3]))) 		, slot1[2], slot1[3], buttonColor, "AJ",     30, 26, 37, switchCharacter, aj    );
+	andrewButton.update(slot1[0], (slot1[1]-10*(slot1[3])+padding)  , slot1[2], slot1[3], buttonColor, "Andrew", 30, 26, 37, switchCharacter, andrew);
+	audraButton.update( slot1[0], (slot1[1]-9*(slot1[3])+padding*2) , slot1[2], slot1[3], buttonColor, "Audra",  30, 26, 37, switchCharacter, audra );
+	bayleyButton.update(slot1[0], (slot1[1]-8*(slot1[3])+padding*3) , slot1[2], slot1[3], buttonColor, "Bayley", 30, 26, 37, switchCharacter, bayley);
+	jaceButton.update(  slot1[0], (slot1[1]-7*(slot1[3])+padding*4) , slot1[2], slot1[3], buttonColor, "Jace",   30, 26, 37, switchCharacter, jace  );
+	jaredButton.update( slot1[0], (slot1[1]-6*(slot1[3])+padding*5) , slot1[2], slot1[3], buttonColor, "Jared",  30, 26, 37, switchCharacter, jared );
+	masonButton.update( slot1[0], (slot1[1]-5*(slot1[3])+padding*6) , slot1[2], slot1[3], buttonColor, "Mason",  30, 26, 37, switchCharacter, mason );
+	nathanButton.update(slot1[0], (slot1[1]-4*(slot1[3])+padding*7) , slot1[2], slot1[3], buttonColor, "Nathan", 30, 26, 37, switchCharacter, nathan);
+	trevorButton.update(slot1[0], (slot1[1]-3*(slot1[3])+padding*8) , slot1[2], slot1[3], buttonColor, "Trevor", 30, 26, 37, switchCharacter, trevor);
 }
 
 
 
-function mainscene(){
+function overworld(){
 
 	BORDER = 2000;
 
@@ -33,33 +33,40 @@ function mainscene(){
 	
 
 	square.update();
-	squaree.update();
 	applebees.update();
+	forkliftArena.update();
 	
 	for(i = 0; i<people.length; i++){
-		if(people[i].alive){
+		if(people[i].alive && people[i].scene == "overworld"){
 			people[i].image = images[i];
 			people[i].update();
 		}
 		
 	}
 
+	if(controlling.isNear(forkliftArena)){
+		fkButton.update((canvas.width/2)-(buttonWidth/2), canvas.height - 60 - padding - (menuBarHeight-(padding*2)), buttonWidth, menuBarHeight-(padding*2), buttonColor, "Enter", 30, 95, 34, switchDisplayScene, "forkliftArenaInterior");
+		if(keyIsDown(32)) switchDisplayScene("forkliftArenaInterior")
+	}
+
+	resistance = 9.95;
+
 	for(i = 0; i <  people.length; i++){
 		if(people[i] != controlling) people[i].inControl = false;
 		else people[i].inControl = true;
 
-		if(people[i].truex > BORDER-people[i].width)
-			people[i].x = canvas.width/2;
+		if(people[i].x > BORDER-people[i].width)
+			people[i].truex -= resistance;
 
-		if(people[i].truey > BORDER-people[i].height)
-			people[i].y = canvas.height/2;
+		if(people[i].y > BORDER-people[i].height)
+			people[i].truey -= resistance;
 
-		if(people[i].truex < -1*BORDER+people[i].width)
-			people[i].x = canvas.width/2;
+		if(people[i].x < -1*BORDER+people[i].width)
+			people[i].truex += resistance;
 	
-		if(people[i].truey < -1*BORDER+people[i].height)
-			people[i].y = canvas.height/2;
-		
+		if(people[i].y < -1*BORDER+people[i].height)
+			people[i].truey += resistance;
+	
 	}
 
 	fill("black");
@@ -73,14 +80,66 @@ function mainscene(){
 	
 }
 
+function forkliftArenaInterior(){
+	BORDER = 2000;
+
+	background("gray");
+
+	floorScale = 400;
+
+	for(q = -2*BORDER; q < BORDER*4; q+=floorScale){
+		//image(grassImg, q-controlling.xc, controlling.yc, 2000, 2000);
+		for(w = -2*BORDER; w < BORDER*4; w+=floorScale){
+			image(metalFloorImg, q-controlling.xc, w-controlling.yc, floorScale, floorScale);
+		}
+	}
+
+	fkButton.update((canvas.width/2)-(buttonWidth/2), canvas.height - 60 - padding - (menuBarHeight-(padding*2)), buttonWidth, menuBarHeight-(padding*2), buttonColor, "Back", 30, 95, 34, switchDisplayScene, "overworld");
+
+	
+	for(i = 0; i<people.length; i++){
+		if(people[i].alive && people[i].scene == "forkliftArenaInterior"){
+			people[i].update();
+		}
+		
+	}
+
+	resistance = 9.95;
+
+	for(i = 0; i <  people.length; i++){
+		if(people[i] != controlling) people[i].inControl = false;
+		else people[i].inControl = true;
+
+		if(people[i].x > BORDER-people[i].width)
+			people[i].truex -= resistance;
+
+		if(people[i].y > BORDER-people[i].height)
+			people[i].truey -= resistance;
+
+		if(people[i].x < -1*BORDER+people[i].width)
+			people[i].truex += resistance;
+	
+		if(people[i].y < -1*BORDER+people[i].height)
+			people[i].truey += resistance;
+	}
+
+	fill("black");
+	rect(BORDER-controlling.xc, -1*BORDER-controlling.yc, 50, BORDER*2); //right
+	rect(-1*BORDER-controlling.xc, -1*BORDER-controlling.yc, BORDER*2, 50); //top
+	rect(-1*BORDER-controlling.xc, -1*BORDER-controlling.yc, 50, BORDER*2); //left
+	rect(-1*BORDER-controlling.xc, BORDER-controlling.yc, BORDER*2+50, 50); //bottom
+
+
+	drawMenuBar();
+}
+
 function drawMenuBar(){
 	fill(backgroundColor);
 	rect(0,(canvas.height) - menuBarHeight, (canvas.width), menuBarHeight);
 	
 	//Buttons
-	changePlayerButton.update(slot1[0],slot1[1],slot1[2],slot1[3], buttonColor, "Change Player", 30, 26, 37, openChangePlayer);
+	changePlayerButton.update(slot1[0],slot1[1],slot1[2],slot1[3], buttonColor, "Change Player", 30, 26, 37, switchDisplayScene, "changePlayer");
 	shitButton.update(slot2[0],slot2[1],slot2[2],slot2[3], buttonColor, "Shit", 30, 100, 37, controlling.shit);
-
 
 
 	//Bottom Right HUD

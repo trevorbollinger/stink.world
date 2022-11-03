@@ -3,14 +3,15 @@ function person(name){
 	this.width = 40;
 
 	//actual x and y coordinates on the canvas
-	this.truex = ((canvas.width/2) - (this.width))+(this.width)+random(-300,300);
-	this.truey = ((canvas.height/2) - (this.height)+(this.width)+random(-300,300));
+	this.truex = ((canvas.width / 2) + random(-400,400));
+	this.truey = ((canvas.height / 2) + random(-400,400));
 
 
 	//offset amount that other items are moving with the world
-	//subtract these from any coordinates to anchor to the world
-	this.xc = 0;
-	this.yc = 0;
+	//subtract controlling.these from any coordinates to anchor to the world
+	//also defines 0,0
+	this.xc = -1000 + 244;
+	this.yc = -1000 + 570;
 
 	//x and y coordinates in extended map
 	this.x = this.truex+this.xc; 
@@ -27,15 +28,17 @@ function person(name){
 	this.money = 100;
 	this.maxSpeed=10;
 	this.shitUrge = random(0,75);
-	this.shitIncrementer = 1/800
+	this.shitIncrementer = 1/800;
 	this.interactionDistance = 30;
 	this.strokeWidth = 2;
 	this.highlighted = false;
 	this.nearSomeone = false;
 	this.edgeDistance = 70;
-	this.location = "";
-	this.accel = 0.2;
-	this.decelModifier=5;
+	this.accel = .75;
+	this.decelModifier=1.5;
+	this.scene = "overworld";
+
+	
 
 	this.update = function(){
 		this.x = this.truex+this.xc;
@@ -43,29 +46,24 @@ function person(name){
 
 		//updates for all people
 		for(q=0; q<people.length; q++){
-
-			
 			if(people[q] == controlling) people[q].highlighted = true
 
 			if(controlling.isNear(people[q])) people[q].highlighted = true;
 			else people[q].highlighted = false;
-	
-
-			people[q].shitUrge += people[q].shitIncrementer;
-
-			if(people[q].shitUrge >= 85 && people[q].shitUrge < 100){
-				toast.show(people[q].name + " is about to shit theirself!", 5);
-			}
-
-			if(people[q].shitUrge >= 100){
-				if(people[q].alive) boom.play();
-				toastd.show(people[q].name + " has shit their pants and died!", 5);
-				people[q].alive = false;
-				people[q].shitUrge = 100;
-			}
-
 		}
 
+		this.shitUrge += this.shitIncrementer;
+
+		if(this.shitUrge >= 85 && this.shitUrge < 100){
+			toast.show(this.name + " is about to shit themself!", 3);
+		}
+
+		if(this.shitUrge >= 100){
+			if(this.alive) boom.play();
+			toastd.show(this.name + " has shit their pants and died!", 3);
+			this.alive = false;
+			this.shitUrge = 100;
+		}
 
 		//red border
 		if(this == controlling){
@@ -103,21 +101,6 @@ function person(name){
 		if(this.downV<0) this.downV=0;
 		if(this.leftV<0) this.leftV=0;
 		if(this.rightV<0) this.rightV=0;
-
-		//done up to here
-		if (this == controlling){
-			if (this.truex < this.edgeDistance)
-				this.truex = this.edgeDistance;
-
-			if (this.truex > canvas.width - this.edgeDistance - this.width)
-				this.truex = canvas.width - this.edgeDistance - this.width;
-
-			if (this.truey < this.edgeDistance)
-				this.truey = this.edgeDistance;
-
-			if (this.truey > canvas.height - this.edgeDistance - menuBarHeight - this.height)
-				this.truey = canvas.height - this.edgeDistance- menuBarHeight - this.width;
-		}
 		
 		if (this.truey > this.edgeDistance)
 			this.truey -= this.upV;
@@ -140,50 +123,65 @@ function person(name){
 			this.xc+=this.rightV;
 
 
-		if(keyIsDown(UP_ARROW) || keyIsDown(87)){	//UP MOVEMENT
-			if(controlling.upV<controlling.maxSpeed){
-				controlling.upV+=controlling.accel;
+		if(controlling == this){
+			if(keyIsDown(UP_ARROW) || keyIsDown(87)){	//UP MOVEMENT
+				if(this.upV<this.maxSpeed){
+					this.upV+=this.accel;
+				}
+			} else {
+				if(this.upV>0){
+					this.upV-=this.accel*this.decelModifier;
+				}
 			}
-		} else {
-			if(this.upV>0){
-				this.upV-=this.accel*this.decelModifier;
-			}
-		}
 
-		if(keyIsDown(DOWN_ARROW) || keyIsDown(83)){ 	//DOWN MOVEMENT
-			if(controlling.downV<controlling.maxSpeed){
-				controlling.downV+=controlling.accel;
+			if(keyIsDown(DOWN_ARROW) || keyIsDown(83)){ 	//DOWN MOVEMENT
+				if(this.downV<this.maxSpeed){
+					this.downV+=this.accel;
+				}
+			} else {
+				if(this.downV>0){
+					this.downV-=this.accel*this.decelModifier;
+				}
 			}
-		} else {
-			if(this.downV>0){
-				this.downV-=this.accel*this.decelModifier;
-			}
-		}
 
-		if(keyIsDown(LEFT_ARROW) || keyIsDown(65)){		//LEFT MOVEMENT
-			if(controlling.leftV<controlling.maxSpeed){
-				controlling.leftV+=controlling.accel;
+			if(keyIsDown(LEFT_ARROW) || keyIsDown(65)){		//LEFT MOVEMENT
+				if(this.leftV<this.maxSpeed){
+					this.leftV+=this.accel;
+				}
+			} else {
+				if(this.leftV>0){
+					this.leftV-=this.accel*this.decelModifier;
+				}
 			}
-		} else {
-			if(this.leftV>0){
-				this.leftV-=this.accel*this.decelModifier;
-			}
-		}
 
-		if(keyIsDown(RIGHT_ARROW) || keyIsDown(68)){		//RIGHT MOVEMENT	
-			if(controlling.rightV<controlling.maxSpeed){
-				controlling.rightV+=controlling.accel;
+			if(keyIsDown(RIGHT_ARROW) || keyIsDown(68)){		//RIGHT MOVEMENT	
+				if(this.rightV<this.maxSpeed){
+					this.rightV+=this.accel;
+				}
+			} else {
+				if(this.rightV>0){ //DECELERATION
+					this.rightV-=this.accel*this.decelModifier;
+				}
 			}
 		} else {
 			if(this.rightV>0){ //DECELERATION
 				this.rightV-=this.accel*this.decelModifier;
+			}
+			if(this.leftV>0){
+					this.leftV-=this.accel*this.decelModifier;
+			}
+			if(this.downV>0){
+					this.downV-=this.accel*this.decelModifier;
+			}
+			if(this.upV>0){
+				this.upV-=this.accel*this.decelModifier;
 			}
 		}
 	}
 
 	this.isNear = function(o2){
 		if (this.x+this.width > o2.x-this.interactionDistance &&
-			this.y+this.height> o2.y-this.interactionDistance &&
+			this.y+this.height > o2.y-this.interactionDistance &&
 			this.y<o2.y+o2.height+this.interactionDistance &&
 			this.x<o2.x+o2.width+this.interactionDistance &&
 			this != o2)
@@ -191,14 +189,22 @@ function person(name){
 	}
 
 	this.shit = function(){
-		if(controlling.location.shittable == true){
+		if(controlling.isNear(applebees)){
 			fart.play();
 			controlling.shitUrge=0;
 		} else {
-			toast.show("GO TO APPLEBEES!!!", 5);
+			toast.show("GO TO APPLEBEES!!!", 2);
 		}
 	}
 }
+
+
+
+
+
+
+
+
 
 
 
