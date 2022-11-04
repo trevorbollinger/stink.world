@@ -10,8 +10,8 @@ function person(name){
 	//offset amount that other items are moving with the world
 	//subtract controlling.these from any coordinates to anchor to the world
 	//also defines 0,0
-	this.xc = -1000 + 244;
-	this.yc = -1000 + 570;
+	this.xc = 0 - (canvas.width/2);
+	this.yc = 0 - (canvas.height/2);
 
 	//x and y coordinates in extended map
 	this.x = this.truex+this.xc; 
@@ -28,7 +28,7 @@ function person(name){
 	this.money = 100;
 	this.maxSpeed=10;
 	this.shitUrge = random(0,75);
-	this.shitIncrementer = 1/800;
+	this.shitIncrementer = 1/400;
 	this.interactionDistance = 30;
 	this.strokeWidth = 2;
 	this.highlighted = false;
@@ -36,7 +36,7 @@ function person(name){
 	this.edgeDistance = 70;
 	this.accel = .75;
 	this.decelModifier=1.5;
-	this.scene = "overworld";
+	this.scene = defaultScene;
 
 	
 
@@ -55,7 +55,7 @@ function person(name){
 		this.shitUrge += this.shitIncrementer;
 
 		if(this.shitUrge >= 85 && this.shitUrge < 100){
-			toast.show(this.name + " is about to shit themself!", 3);
+			toast.show(this.name + " is about to shit their pants!", 3);
 		}
 
 		if(this.shitUrge >= 100){

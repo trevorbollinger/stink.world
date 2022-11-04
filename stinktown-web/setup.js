@@ -29,6 +29,8 @@ function setup() {
 	originx = (canvas.width / 2);
 	originy = canvas.height / 2;
 
+	defaultScene = "overworld";
+
 	//colors
 	backgroundColor = '#2b2d42';
 	buttonColor = '#818CA1';
@@ -59,8 +61,7 @@ function setup() {
 	buttonWidth = (550/2)-10;
 
 	changePlayerButton= new button();
-	fkButton = new button();
-	shitButton= new button();
+	actionButton = new button();
 	menuButton = new button();
 	backButton = new button();
 
@@ -75,13 +76,16 @@ function setup() {
 	trevorButton = new button();
 
 	//create buildings
-	applebees = new building(100,100,250,175, applebeesImg, "Applebees");
+	applebees = new building(-800,-100,250,175, applebeesImg, "Applebees");
 	applebees.shittable = true;
 
-	square = new building(originx - 300, originy - 300, 600, 600, defaultImg, "Square");
+	//create forklifts
+	testfork = new forklift();
+
+	square = new building(-300, -300, 600, 600, defaultImg, "Square");
 	square.shittable = false;
 
-	forkliftArena = new building(originx-1000, originy-1000, 575, 475, forkliftImg, "Forklift Arena");
+	forkliftArena = new building(-1000, -1000, 575, 475, forkliftImg, "Forklift Arena");
 	forkliftArena.shittable = false;
 
 
@@ -92,7 +96,8 @@ function setup() {
 
 	//vars
 
-	displayScene = "overworld";
+	
+	displayScene = defaultScene;
 	debug = true;
 	menuBarHeight = 60;
 	menuBar = canvas.height - menuBarHeight;
