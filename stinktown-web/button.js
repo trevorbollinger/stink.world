@@ -25,7 +25,7 @@ function button(){
 		}
 
 		if(mouseOver(this)){
-			if(mouseIsPressed==true){
+			if(mouseIsPressed){
 				this.color = buttonPressedColor;
 				this.down = true;
 			} else {
@@ -38,7 +38,7 @@ function button(){
 			this.used = false;
 		}
 
-		if(mouseOver(this) && mouseIsPressed && this.used == false){
+		if(mouseOver(this) && mouseIsPressed && !this.used){
 			this.used = true;
 
 			func(id);

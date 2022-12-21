@@ -19,7 +19,12 @@ function draw() {
 	toast.update();
 	toastd.update();
 
-	if(debug==true){
+	if(debug){
+		testfork.health-=0.1;
+
+		if(keyIsDown(173)) menuBarHeight--;
+		else if(keyIsDown(61)) menuBarHeight++;
+
 		fill("white");
 		textSize(20)
 		text(mouseX+", "+mouseY, mouseX+30, mouseY-10); 

@@ -3,13 +3,12 @@ function person(name){
 	this.width = 40;
 
 	//actual x and y coordinates on the canvas
-	this.truex = ((canvas.width / 2) + random(-400,400));
-	this.truey = ((canvas.height / 2) + random(-400,400));
+	this.truex = ((canvas.width / 2) + random(-300,300));
+	this.truey = ((canvas.height / 2) + random(-300,300));
 
 
 	//offset amount that other items are moving with the world
 	//subtract controlling.these from any coordinates to anchor to the world
-	//also defines 0,0
 	this.xc = 0 - (canvas.width/2);
 	this.yc = 0 - (canvas.height/2);
 
@@ -37,6 +36,7 @@ function person(name){
 	this.accel = .75;
 	this.decelModifier=1.5;
 	this.scene = defaultScene;
+	this.vehicle = none;
 
 	
 
@@ -75,7 +75,7 @@ function person(name){
 		}
 
 		//white border
-		if(this.highlighted == true){
+		if(this.highlighted){
 			fill("white");
 			rect((this.x-controlling.xc)-this.strokeWidth,
 				 (this.y-controlling.yc)-this.strokeWidth,

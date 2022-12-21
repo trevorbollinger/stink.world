@@ -19,6 +19,9 @@ function preload(){
 	grassImg = loadImage('images/grass.jpg');
 	metalFloorImg = loadImage('images/metalfloor.jpg')
 	forkliftImg = loadImage('images/forklift.jpg');
+	forkliftMechanicImg = loadImage('images/forkliftMechanic.jpg');
+
+	forkImg = loadImage('images/fork.png');
 }
 
 function setup() {
@@ -28,7 +31,7 @@ function setup() {
 
 	originx = (canvas.width / 2);
 	originy = canvas.height / 2;
-
+	none = new forklift();
 	defaultScene = "overworld";
 
 	//colors
@@ -75,18 +78,22 @@ function setup() {
 	nathanButton = new button();
 	trevorButton = new button();
 
-	//create buildings
+	//overworld buildings
 	applebees = new building(-800,-100,250,175, applebeesImg, "Applebees");
 	applebees.shittable = true;
-
-	//create forklifts
-	testfork = new forklift();
 
 	square = new building(-300, -300, 600, 600, defaultImg, "Square");
 	square.shittable = false;
 
 	forkliftArena = new building(-1000, -1000, 575, 475, forkliftImg, "Forklift Arena");
 	forkliftArena.shittable = false;
+
+	//forkliftArenaInterior buildings
+	forkliftMechanic = new building(-1300, 900, 800, 450, forkliftMechanicImg, "Forklift Mechanic");
+
+	//create forklifts
+	testfork = new forklift();
+
 
 
 	for(j = 0; j < people.length; j++){
@@ -112,11 +119,6 @@ function setup() {
 	//UI
 	slot1 = [padding, (((canvas.height))-menuBarHeight+padding), buttonWidth, menuBarHeight-(padding*2)];
 	slot2 = [(padding*2)+slot1[2],slot1[1], slot1[2],slot1[3]]
-
-
-
-
-
 
 
 
