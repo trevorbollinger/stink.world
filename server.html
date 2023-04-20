@@ -25,10 +25,10 @@
                     <img src="logo.png" width="28" height="28" alt="">
                 </a>
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="server.html">Minecraft</a>
                     </li>
                 </ul>
@@ -38,8 +38,31 @@
 
     <!-- body -->
     <div id="main" class="standard">
-        <h1>welcome to boli.dev!</h1><br>
-        <br><br><br><br><br><br><br><br><br>
+        <button type="button" class="collapsible">Collapse Dynmap</button>
+        <div class="content">
+            <embed type="text/html" src="http://174.74.62.206:8123" width="98%" height="1080px">
+        </div>
+        <button type="button" class="collapsible">Collapse Player Analytics</button>
+        <div class="content">
+            <embed type="text/html" src="http://174.74.62.206:8804" width="98%" height="1080px">
+        </div>
+
+        <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
+        }
+        </script>
     </div>
 
     <!-- footer -->

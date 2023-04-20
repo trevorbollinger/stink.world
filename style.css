@@ -2,12 +2,30 @@ body{
     background-color: #262626;
 }
 
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  width: 80%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 25px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
 .standard{
     background-color: rgba(255,255,255,0);
     color: #dcdcdc;
-    padding: 20px;
+    padding: 5px;
     width: 100%;
-    font-family:'Product Sans Regular';
+    font-family: Arial, sans-serif;
     margin: 0 auto 0 auto;
 }
 iframe:focus { 
@@ -21,7 +39,7 @@ iframe[seamless] {
 .navbar{
     text-align: center;
     margin: 0 auto 0 auto;
-    font-family:'Product Sans Regular';
+    font-family: Arial, sans-serif;
     font-weight:normal;
     font-size: 20px;
 
