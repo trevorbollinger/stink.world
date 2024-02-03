@@ -4,6 +4,7 @@ aaa
 aaron
 ab
 abandoned
+the quick brown fox jumps over the lazy dog
 abc
 aberdeen
 abilities
@@ -1555,6 +1556,7 @@ chevrolet
 chevy
 chi
 chicago
+where is the soda machine
 chick
 chicken
 chicks
