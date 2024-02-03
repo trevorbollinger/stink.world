@@ -28,13 +28,47 @@ body{
     font-family: Arial, sans-serif;
     margin: 0 auto 0 auto;
 }
-iframe:focus { 
-  outline: none;
+ul{display:block;}
+ul li{display:inline-block;}
+#myInput {
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+    background-color: #343a40;
+    color: white;
+    padding: 5px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0 auto 0 auto;
+  padding: 5%
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+  border-radius: 10px;
 }
 
-iframe[seamless] { 
-  display: block;
+#myUL {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+    border-radius: 10px;
 }
+
+#myUL li a {
+  border: 1px solid #ddd; /* Add a border to all links */
+  margin-top: -1px; /* Prevent double borders */
+
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  display: block; /* Make it into a block element to fill the whole list */
+    background-color: #343a40;
+    color: white;
+    padding: 5px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+      border-radius: 3px;
+}
+
 
 .navbar{
     text-align: center;
@@ -50,6 +84,10 @@ iframe[seamless] {
 .bg-dark{
     background-color: #343a40;
 
+}
+#logo{
+    padding: 10px;
+    border-radius: 12px;
 }
 
 .body-text{
@@ -80,6 +118,7 @@ iframe[seamless] {
 #main{
     float:left;
     text-align: center;
+    padding:3%;
 }
 
 #footer{
