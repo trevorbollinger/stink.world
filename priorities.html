@@ -17,6 +17,25 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <script>
+fetch('cards.txt')
+.then(response => response.text())
+.then(data => {
+    var lines = data.split(/\r?\n/);
+    var listItems = "";
+
+    for (var i = 0; i < lines.length; i++) {
+        listItems += "<li><a href='#'>" + lines[i] + "</a></li>";
+    }
+
+    // Get the unordered list element by its id
+    var ul = document.getElementById('myUL');
+
+    // Add the new list items to the existing unordered list
+    ul.innerHTML += listItems;
+})
+.catch(error => console.error('Error:', error));
+
+
 function myFunction() {
   // Declare variables
   var input, filter, ul, li, a, i, txtValue;
@@ -53,114 +72,6 @@ function myFunction() {
     <div id="main" class="standard">
      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..">
          <ul id="myUL" class="navbar">
-         <li><a href="#">Aasdfasfasdfasfasdfasdfasdfasdfasdfasfasdfasdfasdfd</a></li>
-         <li><a href="#">B</a></li>
-         <li><a href="#">sdfa4sd536fc1sda65c74asd53c1356asd6fasd43f214asd35f435asdf1486C</a></li>
-         <li><a href="#">D</a></li>
-         <li><a href="#">drhtE</a></li>
-         <li><a href="#">F</a></li>
-         <li><a href="#">G</a></li>
-         <li><a href="#">H</a></li>
-         <li><a href="#">Idfasdfsdfadfsdf</a></li>
-         <li><a href="#">J</a></li>
-         <li><a href="#">K</a></li>
-         <li><a href="#">L</a></li>
-         <li><a href="#">M</a></li>
-         <li><a href="#">N</a></li>
-                  <li><a href="#">D</a></li>
-         <li><a href="#">E</a></li>
-         <li><a href="#">F</a></li>
-         <li><a href="#">G</a></li>
-         <li><a href="#">H</a></li>
-         <li><a href="#">I</a></li>
-         <li><a href="#">J</a></li>
-         <li><a href="#">Kytjyjdjfgj</a></li>
-         <li><a href="#">L</a></li>
-         <li><a href="#">M</a></li>
-         <li><a href="#">N</a></li>
-                  <li><a href="#">D</a></li>
-         <li><a href="#">E</a></li>
-         <li><a href="#">F</a></li>
-         <li><a href="#">G</a></li>
-         <li><a href="#">H</a></li>
-         <li><a href="#">I</a></li>
-         <li><a href="#">fdyhjfyhbdftghbfgJ</a></li>
-         <li><a href="#">K</a></li>
-         <li><a href="#">L</a></li>
-         <li><a href="#">M</a></li>
-         <li><a href="#">N</a></li>
-                  <li><a href="#">Aasdfasfasdfasfasdfasdfasdfasdfasdfasfasdfasdfasdfd</a></li>
-         <li><a href="#">B</a></li>
-         <li><a href="#">sdfa4sd536fc1sda65c74asd53c1356asd6fasd43f214asd35f435asdf1486C</a></li>
-         <li><a href="#">D</a></li>
-         <li><a href="#">drhtE</a></li>
-         <li><a href="#">F</a></li>
-         <li><a href="#">G</a></li>
-         <li><a href="#">H</a></li>
-         <li><a href="#">Idfasdfsdfadfsdf</a></li>
-         <li><a href="#">J</a></li>
-         <li><a href="#">K</a></li>
-         <li><a href="#">L</a></li>
-         <li><a href="#">M</a></li>
-         <li><a href="#">N</a></li>
-                  <li><a href="#">D</a></li>
-         <li><a href="#">E</a></li>
-         <li><a href="#">F</a></li>
-         <li><a href="#">G</a></li>
-         <li><a href="#">H</a></li>
-         <li><a href="#">I</a></li>
-         <li><a href="#">J</a></li>
-         <li><a href="#">Kytjyjdjfgj</a></li>
-         <li><a href="#">L</a></li>
-         <li><a href="#">M</a></li>
-         <li><a href="#">N</a></li>
-                  <li><a href="#">D</a></li>
-         <li><a href="#">E</a></li>
-         <li><a href="#">F</a></li>
-         <li><a href="#">G</a></li>
-         <li><a href="#">H</a></li>
-         <li><a href="#">I</a></li>
-         <li><a href="#">fdyhjfyhbdftghbfgJ</a></li>
-         <li><a href="#">K</a></li>
-         <li><a href="#">L</a></li>
-         <li><a href="#">M</a></li>
-         <li><a href="#">N</a></li>
-                  <li><a href="#">Aasdfasfasdfasfasdfasdfasdfasdfasdfasfasdfasdfasdfd</a></li>
-         <li><a href="#">B</a></li>
-         <li><a href="#">sdfa4sd536fc1sda65c74asd53c1356asd6fasd43f214asd35f435asdf1486C</a></li>
-         <li><a href="#">D</a></li>
-         <li><a href="#">drhtE</a></li>
-         <li><a href="#">F</a></li>
-         <li><a href="#">G</a></li>
-         <li><a href="#">H</a></li>
-         <li><a href="#">Idfasdfsdfadfsdf</a></li>
-         <li><a href="#">J</a></li>
-         <li><a href="#">K</a></li>
-         <li><a href="#">L</a></li>
-         <li><a href="#">M</a></li>
-         <li><a href="#">N</a></li>
-                  <li><a href="#">D</a></li>
-         <li><a href="#">E</a></li>
-         <li><a href="#">F</a></li>
-         <li><a href="#">G</a></li>
-         <li><a href="#">H</a></li>
-         <li><a href="#">I</a></li>
-         <li><a href="#">J</a></li>
-         <li><a href="#">Kytjyjdjfgj</a></li>
-         <li><a href="#">L</a></li>
-         <li><a href="#">M</a></li>
-         <li><a href="#">N</a></li>
-                  <li><a href="#">D</a></li>
-         <li><a href="#">E</a></li>
-         <li><a href="#">F</a></li>
-         <li><a href="#">G</a></li>
-         <li><a href="#">H</a></li>
-         <li><a href="#">I</a></li>
-         <li><a href="#">fdyhjfyhbdftghbfgJ</a></li>
-         <li><a href="#">K</a></li>
-         <li><a href="#">L</a></li>
-         <li><a href="#">M</a></li>
-         <li><a href="#">N</a></li>
          </ul> 
         <br>
     </div>
