@@ -50,7 +50,6 @@ ul li{display:inline-block;}
 }
 
 
-
 #myUL {
   /* Remove default list styling */
   list-style-type: none;
@@ -73,7 +72,7 @@ ul li{display:inline-block;}
   border-radius: 3px;
 }
 
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 620px){
   /* For mobile phones: */
   #myInput {
     height:60px;
