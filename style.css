@@ -62,16 +62,15 @@ ul li{display:inline-block;}
 #myUL li a {
   border: 1px solid #ddd; /* Add a border to all links */
   margin-top: -1px; /* Prevent double borders */
-
   text-decoration: none; /* Remove default text underline */
   font-size: 18px; /* Increase the font-size */
   display: block; /* Make it into a block element to fill the whole list */
-    background-color: #343a40;
-    color: white;
-    padding: 5px;
-    width: 100%;
-    font-family: Arial, sans-serif;
-      border-radius: 3px;
+  background-color: #343a40;
+  color: white;
+  padding: 5px;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  border-radius: 3px;
 }
 
 @media only screen and (max-width: 620px) {
@@ -80,8 +79,8 @@ ul li{display:inline-block;}
     height:60px;
     font-size: 20px;
   }
-  #myUL {
-    font-size: 20;
+  #myUL li a {
+    font-size: 23px;
   }
 }
 .navbar{
