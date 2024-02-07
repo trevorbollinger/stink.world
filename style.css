@@ -20,6 +20,9 @@ body{
   background-color: #555;
 }
 
+
+
+
 .standard{
     background-color: rgba(255,255,255,0);
     color: #dcdcdc;
@@ -37,7 +40,7 @@ ul li{display:inline-block;}
     background-color: #343a40;
     color: white;
     padding: 5px;
-    width: 100%;
+
     font-family: Arial, sans-serif;
     margin: 0 auto 0 auto;
   padding: 5%
@@ -45,6 +48,8 @@ ul li{display:inline-block;}
   margin-bottom: 12px; /* Add some space below the input */
   border-radius: 10px;
 }
+
+
 
 #myUL {
   /* Remove default list styling */
@@ -69,7 +74,16 @@ ul li{display:inline-block;}
       border-radius: 3px;
 }
 
-
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  #myInput {
+    height:60px;
+    font-size: 20px;
+  }
+  #myUL {
+    font-size: 20;
+  }
+}
 .navbar{
     text-align: center;
     margin: 0 auto 0 auto;
@@ -93,6 +107,9 @@ ul li{display:inline-block;}
 .body-text{
     width:100%
 }
+
+
+
 
 #falling-game{
 
