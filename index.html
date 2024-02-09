@@ -17,6 +17,9 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <script>
+
+var lines;
+
 fetch('cards.txt')
 .then(response => response.text())
 .then(data => {
@@ -55,6 +58,17 @@ function myFunction() {
     }
   }
 }
+
+function randomWord(){
+
+
+    var word;
+
+    word = document.getElementById("randButton");
+
+    word.innerHTML = lines[[Math.floor(Math.random() * lines.length)]];
+}
+
 </script>
 <body>
     <!-- navbar -->
@@ -68,12 +82,21 @@ function myFunction() {
         </div>
     </nav> <br> <!--end navbar-->
 
+
+    <button type="button" id="randButton" onclick="randomWord()">Click Me!</button>
+
     <!-- body -->
     <div id="main" class="standard">
      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..">
          <ul id="myUL" class="navbar">
-        
+            <li><a href='#'>sdafrtgsd</a></li>
+            <li><a href='#'>sdafssdafasdfd</a></li>
+            <li><a href='#'>sdassadfasdfdfadsfasdfafsd</a></li>
+            <li><a href='#'>fghjfghsdafsd</a></li>
+            <li><a href='#'>sdafsdafssd</a></li>
 
+            <li><a href='#'>sdajfgjfdhjhgjfsd</a></li>
+            <li><a href='#'>sfghjfgjhdafgfsd</a></li>
          </ul> 
         <br>
     </div>
