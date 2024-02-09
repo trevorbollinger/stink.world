@@ -20,6 +20,8 @@
 
 var lines = ["f","a"];
 
+var lns = [""];
+
 fetch('cards.txt')
 .then(response => response.text())
 .then(data => {
@@ -34,10 +36,15 @@ fetch('cards.txt')
     var ul = document.getElementById('myUL');
 
     // Add the new list items to the existing unordered list
+
+    lns = lines;
+
     ul.innerHTML += listItems;
     console.log(lines[4]);
 })
 .catch(error => console.error('Error:', error));
+
+
 
 
 function myFunction() {
@@ -67,7 +74,8 @@ function randomWord(){
 
     word = document.getElementById("randButton");
 
-    word.innerHTML = lines[[Math.floor(Math.random() * lines.length)]];
+
+    word.innerHTML = lns[[Math.floor(Math.random() * lns.length)]];
 }
 
 </script>
