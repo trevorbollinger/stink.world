@@ -1,9 +1,10 @@
 body {
     background-color: #262626;
+    padding: 20px; /* Add padding to the body */
 }
 
 #header {
-    padding: 10px;
+
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -16,20 +17,20 @@ body {
 
 #display {
     text-align: center;
- display: block;
- width: 75%;
-  margin-left: auto;
-  margin-right: auto;
-   justify-content: center;
-   border-radius: 15px;
-   background-color: #1a1a1a; 
-
+    display: block;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: #1a1a1a; 
+    padding: 10px; /* Add padding to the display */
 }
 
 .standard {
     background-color: rgba(255,255,255,0);
     color: #dcdcdc;
-    padding: 5px;
+    padding: 10px; /* Adjust padding for the standard class */
     width: 100%;
     font-family: Arial, sans-serif;
     margin: 0 auto;
@@ -41,7 +42,7 @@ body {
     width: 100%;
     background-color: #343a40;
     color: white;
-    padding: 5px;
+    padding: 10px; /* Adjust padding for the input */
     font-family: Arial, sans-serif;
     margin: 0 auto;
     border: 1px solid #ddd;
@@ -51,7 +52,7 @@ body {
 
 #myUL {
     list-style-type: none;
-    padding: 0;
+    padding: 10px; /* Adjust padding for the unordered list */
     margin: 0;
     border-radius: 10px;
 }
@@ -64,7 +65,7 @@ body {
     display: block;
     background-color: #343a40;
     color: white;
-    padding: 5px;
+    padding: 10px; /* Adjust padding for the list items */
     width: 100%;
     font-family: Arial, sans-serif;
     border-radius: 3px;
@@ -96,4 +97,5 @@ body {
     font-size: 20px;
     background-color: #343a40;
     color: white;
+    padding: 20px; /* Add padding to the navbar */
 }
