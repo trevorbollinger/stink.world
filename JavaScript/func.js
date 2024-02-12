@@ -39,7 +39,7 @@ function newCard(){
   }
 
 
-  if(checkedValue == "on"){
+  if(!checkedValue == "on"){
     // console.log("unique");
 
     r = randNum(lng);
