@@ -10,93 +10,37 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-    <!-- Falling Game & p5.js -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+    <script
+              src="https://code.jquery.com/jquery-3.7.1.js"
+              integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+              crossorigin="anonymous"></script>
 
-    <!-- Stylesheet -->
+    <script src="JavaScript/main.js"></script>
+    <script src="JavaScript/func.js"></script>
+
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <script>
 
-var lines = ["f","a"];
-
-var lns = [""];
-
-fetch('cards.txt')
-.then(response => response.text())
-.then(data => {
-    var lines = data.split(/\r?\n/);
-    var listItems = "";
-
-    for (var i = 0; i < lines.length; i++) {
-        listItems += "<li><a href='#'>" + lines[i] + "</a></li>";
-    }
-
-    // Get the unordered list element by its id
-    var ul = document.getElementById('myUL');
-
-    // Add the new list items to the existing unordered list
-
-    lns = lines;
-
-    ul.innerHTML += listItems;
-    console.log(lines[4]);
-})
-.catch(error => console.error('Error:', error));
-
-
-
-
-function myFunction() {
-  // Declare variables
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('myInput');
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName('li');
-
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
-
-function randomWord(){
-
-
-    var word;
-
-    word = document.getElementById("randButton");
-
-
-    word.innerHTML = lns[[Math.floor(Math.random() * lns.length)]];
-}
-
 </script>
 <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-darkt">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <nav class="navbar navbar-dark bg-dark">
-                <a href="index.html" id="logo">
-                     <img src="logo.png" width="30" height="30" alt="">
-                </a>
-            </nav>
-        </div>
-    </nav> <br> <!--end navbar-->
+   
 
 
-    <button type="button" id="randButton" onclick="randomWord()">Click Me!</button>
+    <button type="button" id="randButton" onclick="newCard()">Click Me!</button>
+
+    <div id="checkbox"> 
+
+    <input class="messageCheckbox" type="checkbox" class="uniqueCheck">
+    Only New Cards
+
+    </div>
+
+
 
     <!-- body -->
     <div id="main" class="standard">
-     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..">
+     <input type="text" id="myInput" onkeyup="searchList()" placeholder="Search..">
          <ul id="myUL" class="navbar">
 
          </ul> 
