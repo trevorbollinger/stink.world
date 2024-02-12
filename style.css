@@ -4,6 +4,7 @@ body {
 }
 
 #header {
+    color: white;
 
     display: flex;
     justify-content: center;
@@ -12,10 +13,14 @@ body {
 }
 
 #controlPanel {
+        color: white;
+
     text-align: center;
 }
 
 #display {
+        color: white;
+
     text-align: center;
     display: block;
     width: 40%;
