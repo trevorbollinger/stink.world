@@ -25,7 +25,8 @@ function searchList() {
 
 
 function newCard(){
-  var display = document.getElementById("randButton");
+  var textDisplay = document.getElementById("textDisplay");
+  var letterDisplay = document.getElementById("letterDisplay");
 
 
   var checkedValue = null; 
@@ -43,22 +44,35 @@ function newCard(){
 
     r = randNum(lng);
 
-    selectedWord = lns[r];
+    if(lng > 0){
+      selectedCard = cardsu[r];
+
+      displayText = selectedCard.text;
+      displayLetter = selectedCard.letter;
+
+    } else {
+      displayText = "Out of Cards!"
+    }
 
     for(i = r; i < lng; i++){
-      lns[i] = lns[i + 1];
+      cardsu[i] = cardsu[i + 1];
     }
 
     lng--;
 
 
   } else {
-    selectedWord = LINES[randNum(LINES.length)];
+    r = randNum(CARDS.length);
+    selectedCard = CARDS[r];
+
+
+    displayText = selectedCard.text;
+    displayLetter = "Letter: " + selectedCard.letter;
+
   }
 
-
-
-  display.innerHTML = selectedWord;
+  textDisplay.innerHTML = displayText;
+  letterDisplay.innerHTML = displayLetter;
 
 
   // for(j = 0; j < lng; j++){

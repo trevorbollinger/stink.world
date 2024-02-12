@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Comfy Caj :)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -25,18 +26,24 @@
 </script>
 <body>
    
+    <div id="header">
 
-
-    <button type="button" id="randButton" onclick="newCard()">Click Me!</button>
-
-    <div id="checkbox"> 
-
-    <input class="messageCheckbox" type="checkbox" class="uniqueCheck">
-    Only New Cards
-
+        <div id="controlPanel">
+            <button type="button" id="randButton" onclick="newCard()">Click Me!</button>
+            <div id="checkbox"> 
+                <input class="messageCheckbox" type="checkbox" id="uniqueCheck">
+                <label for="uniqueCheck">Only New Cards</label>
+            </div>
+        </div>
     </div>
 
 
+    <div id="display">
+            <h3 id="textDisplay"></h3>
+            <h5 id="letterDisplay"></h5>
+    </div>
+
+    
 
     <!-- body -->
     <div id="main" class="standard">

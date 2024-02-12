@@ -1,153 +1,99 @@
-body{
+body {
     background-color: #262626;
 }
 
-
-.collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 8px;
-  width: 80%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  border-radius: 25px;
+#header {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 15px;
 }
 
-.active, .collapsible:hover {
-  background-color: #555;
+#controlPanel {
+    text-align: center;
 }
 
+#display {
+    text-align: center;
+ display: block;
+ width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+   justify-content: center;
+   border-radius: 15px;
+   background-color: #1a1a1a; 
 
+}
 
-
-.standard{
+.standard {
     background-color: rgba(255,255,255,0);
     color: #dcdcdc;
     padding: 5px;
     width: 100%;
     font-family: Arial, sans-serif;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
 }
-ul{display:block;}
-ul li{display:inline-block;}
+
 #myInput {
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
     background-color: #343a40;
     color: white;
     padding: 5px;
-
     font-family: Arial, sans-serif;
-    margin: 0 auto 0 auto;
-  padding: 5%
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-  border-radius: 10px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    border-radius: 10px;
 }
 
-
 #myUL {
-  /* Remove default list styling */
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     border-radius: 10px;
 }
 
 #myUL li a {
-  border: 1px solid #ddd; /* Add a border to all links */
-  margin-top: -1px; /* Prevent double borders */
-  text-decoration: none; /* Remove default text underline */
-  font-size: 18px; /* Increase the font-size */
-  display: block; /* Make it into a block element to fill the whole list */
-  background-color: #343a40;
-  color: white;
-  padding: 5px;
-  width: 100%;
-  font-family: Arial, sans-serif;
-  border-radius: 3px;
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    background-color: #343a40;
+    color: white;
+    padding: 5px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    border-radius: 3px;
 }
 
-@media only screen and (max-width: 620px){
-  /* For mobile phones: */
-  #myInput {
-    height:60px;
-    font-size: 20px;
-  }
-  #myUL li a {
-    font-size: 23px;
-  }
+@media only screen and (max-width: 620px) {
+    #myInput {
+        height:50px;
+        font-size: 19px;
+    }
+    #myUL li a {
+        font-size: 20px;
+    }
+    #header {
+        flex-direction: column;
+        align-items: center;
+    }
+    #display {
+        margin-left: 0;
+        margin-top: 20px;
+    }
 }
-.navbar{
+
+.navbar {
     text-align: center;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
     font-family: Arial, sans-serif;
     font-weight:normal;
     font-size: 20px;
-
     background-color: #343a40;
     color: white;
-}
-
-.bg-dark{
-    background-color: #343a40;
-
-}
-#logo{
-    padding: 10px;
-    border-radius: 12px;
-}
-
-.body-text{
-    width:100%
-}
-
-
-
-
-#falling-game{
-
-}
-
-#greeting{
-    float: left;
-    margin-left: 15%;
-    width: 35%;
-    height: 500px;
-    position: relative;
-
-}
-
-#game-container{
-    width: 35%;
-    height: 500px;
-    float: right;
-    margin-right: 15%;
-
-}
-
-#main{
-    float:left;
-    text-align: center;
-    padding:3%;
-}
-
-#footer{
-    vertical-align: middle;
-    text-align: center;
-    margin-top:20%;
-}
-
-.center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
