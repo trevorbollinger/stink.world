@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Comfy Caj :)</title>
+    <title>stink.world - Register Card</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap -->
@@ -21,18 +21,34 @@
     <script src="JavaScript/main.js"></script>
     <script src="JavaScript/func.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="register.css">
 </head>
-<script>
 
+<script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbykDmNAY6s70KQBKNRoKIKbl3yqHDQtOHx_hInqq1cNaNo9UvhwQdASGIGjSaYgaE23Yg/exec'
+
+const form = document.forms['cards-form']
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  .then(response => alert("Thank you! your form is submitted successfully." ))
+  .then(() => { window.location.reload(); })
+  .catch(error => console.error('Error!', error.message))
+})
 </script>
 <body>
-   
- <div id="">
-     
-     
-
- </div>
-
+ <body>
+    <div class="container">
+        <form method="post" action="https://script.google.com/macros/s/AKfycbykDmNAY6s70KQBKNRoKIKbl3yqHDQtOHx_hInqq1cNaNo9UvhwQdASGIGjSaYgaE23Yg/exec" name="cards-form">
+            <h4>Register Card</h4>
+            <input type="text" name="text" placeholder="Card Text">
+            <input type="text" name="part" placeholder="Part of Speech">
+            <input type="checkbox" name="stinky" value="x" id="stinky">
+                <label for="stinky">Inside Joke</label><br>
+            <input type="submit" value="Register Card" id="submit">
+        </form>
+    </div>
+</body>
 </body>
 </html>
