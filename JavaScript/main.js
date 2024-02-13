@@ -1,11 +1,9 @@
-var ll;
-var lns;
+var rawtext, lns, lng, cds, CARDS, cardsu;
 
-var priorities = ['P', 'R', 'I', 'O', 'R', 'I', 'T', 'I', 'E', 'S'];
-
-// Define the Card class
 class Card {
     constructor(text) {
+        var priorities = ['P', 'R', 'I', 'O', 'R', 'I', 'T', 'I', 'E', 'S'];
+
         this.text = text;
         this.letter = priorities[randNum(priorities.length)];
     }
@@ -14,29 +12,26 @@ class Card {
 fetch('data/cards.txt')
 .then(response => response.text())
 .then(data => {
-    var ll = data.split(/\r?\n/);
-    var cds = [];
+    var rawtext = data.split(/\r?\n/); //raw text data array
+    var cds = []; //original object array
 
-    for (var i = 0; i < ll.length; i++) {
-        // Create a new Card object for each line and add it to the cds array
-        cds.push(new Card(ll[i]));
+    for (var i = 0; i < rawtext.length; i++) {
+        //insert rawtext into objects
+        cds.push(new Card(rawtext[i]));
     }
 
-    lng = cds.length;
+    lng = cds.length; //init length
 
-    CARDS = cds;
-    cardsu = cds;
+    //clone origin array
+    CARDS = cds; //Static array, allow repeats
+    cardsu = cds; //Unique cards array, deny repeats
 
-    // If you want to continue with your original code, you can replace ll with cds
     var listItems = "";
     for (var i = 0; i < cds.length; i++) {
         listItems += "<li><a href='#'>" + cds[i].text + "</a></li>";
     }
 
-    // Get the unordered list element by its id
     var ul = document.getElementById('myUL');
-
-    // Add the new list items to the existing unordered list
     ul.innerHTML += listItems;
 })
 .catch(error => console.error('Error:', error));

@@ -1,3 +1,57 @@
+
+function newCard(){
+  var textDisplay = document.getElementById("textDisplay");
+  var letterDisplay = document.getElementById("letterDisplay");
+
+  var checkedValue = null; 
+  var inputElements = document.getElementsByClassName('messageCheckbox');
+
+  for(var i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           checkedValue = inputElements[i].value;
+           break;
+      }
+  }
+
+  if(checkedValue == "on"){
+
+    //Allow Repeat Cards
+    r = randNum(CARDS.length);
+    selectedCard = CARDS[r];
+
+    displayText = selectedCard.text;
+    displayLetter = "Letter: " + selectedCard.letter;
+
+  } else {
+    //Deny Repeat Cards
+
+    r = randNum(lng);
+
+    //update display
+    if(lng > 0){
+      selectedCard = cardsu[r];
+
+      displayText = selectedCard.text;
+      displayLetter = selectedCard.letter;
+
+    } else displayText = "Out of Cards!";
+
+    //remove selected card and shift remaining forward
+    for(i = r; i < lng; i++){
+      cardsu[i] = cardsu[i + 1];
+    }
+    lng--;
+  }
+
+  textDisplay.innerHTML = displayText;
+  letterDisplay.innerHTML = displayLetter;
+  
+}
+
+function randNum(max){
+  return Math.floor((Math.random() * max));
+}
+
 function searchList() {
   // Declare variables
   var input, filter, ul, li, a, i, txtValue;
@@ -15,73 +69,5 @@ function searchList() {
     } else {
       li[i].style.display = "none";
     }
- 
   }
-
-
-}
-
-
-
-
-function newCard(){
-  var textDisplay = document.getElementById("textDisplay");
-  var letterDisplay = document.getElementById("letterDisplay");
-
-
-  var checkedValue = null; 
-  var inputElements = document.getElementsByClassName('messageCheckbox');
-  for(var i=0; inputElements[i]; ++i){
-      if(inputElements[i].checked){
-           checkedValue = inputElements[i].value;
-           break;
-      }
-  }
-
-
-  if(!checkedValue == "on"){
-    // console.log("unique");
-
-    r = randNum(lng);
-
-    if(lng > 0){
-      selectedCard = cardsu[r];
-
-      displayText = selectedCard.text;
-      displayLetter = selectedCard.letter;
-
-    } else {
-      displayText = "Out of Cards!"
-    }
-
-    for(i = r; i < lng; i++){
-      cardsu[i] = cardsu[i + 1];
-    }
-
-    lng--;
-
-
-  } else {
-    r = randNum(CARDS.length);
-    selectedCard = CARDS[r];
-
-
-    displayText = selectedCard.text;
-    displayLetter = "Letter: " + selectedCard.letter;
-
-  }
-
-  textDisplay.innerHTML = displayText;
-  letterDisplay.innerHTML = displayLetter;
-
-
-  // for(j = 0; j < lng; j++){
-  //   console.log(lns[j]);
-  // }
-
-
-}
-
-function randNum(max){
-  return Math.floor((Math.random() * max));
 }
