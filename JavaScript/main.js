@@ -25,6 +25,7 @@ fetch('data/cards.xlsx')
         cds.push(new Card(row.text, row.part, row.stinky));
     });
 
+    shuffle(cds);
     lng = cds.length; //init length
 
     //clone origin array

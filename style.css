@@ -13,16 +13,20 @@ body {
 }
 
 #controlPanel {
-        color: white;
-
+    color: white;
     text-align: center;
+    display: flex; /* Add this line */
+    justify-content: center; /* Add this line */
+    align-items: center; /* Add this line */
+    gap: 20px; /* Add this line */
 }
+
 
 #display {
         color: white;
 
     text-align: center;
-    display: block;
+    display: none;
     width: 40%;
     margin-left: auto;
     margin-right: auto;
