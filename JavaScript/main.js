@@ -1,24 +1,29 @@
 var rawtext, lns, lng, cds, CARDS, cardsu;
 
 class Card {
-    constructor(text) {
+    constructor(text, part, stinky) {
         var priorities = ['P', 'R', 'I', 'O', 'R', 'I', 'T', 'I', 'E', 'S'];
 
         this.text = text;
+        this.part = part;
+        this.stinky = stinky;
         this.letter = priorities[randNum(priorities.length)];
     }
 }
 
-fetch('data/cards.txt')
-.then(response => response.text())
+fetch('data/cards.xlsx')
+.then(response => response.arrayBuffer())
 .then(data => {
-    var rawtext = data.split(/\r?\n/); //raw text data array
-    var cds = []; //original object array
+    var workbook = XLSX.read(new Uint8Array(data), {type: 'array'});
+    var sheet_name_list = workbook.SheetNames;
+    var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
 
-    for (var i = 0; i < rawtext.length; i++) {
-        //insert rawtext into objects
-        cds.push(new Card(rawtext[i]));
-    }
+    cds = []; //original object array
+
+    xlData.forEach(function(row) {
+        //insert row.text into objects
+        cds.push(new Card(row.text, row.part, row.stinky));
+    });
 
     lng = cds.length; //init length
 
