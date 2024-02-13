@@ -17,9 +17,12 @@ body {
     display: flex; /* Add this line */
     justify-content: center; /* Add this line */
     align-items: center; /* Add this line */
-    gap: 20px; /* Add this line */
 }
 
+/* Checkbox Label */
+.form-check-label {
+    color: white; /* Change the text color to white for visibility */
+}
 
 #display {
         color: white;
