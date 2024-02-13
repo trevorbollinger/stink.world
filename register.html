@@ -18,6 +18,10 @@
               integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
               crossorigin="anonymous"></script>
 
+    <script async defer src="https://apis.google.com/js/api.js" onload="GAPILoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="GSILoaded()"></script>
+
+
     <script src="JavaScript/main.js"></script>
     <script src="JavaScript/func.js"></script>
 
@@ -38,17 +42,16 @@ form.addEventListener('submit', e => {
 })
 </script>
 <body>
- <body>
-    <div class="container">
-        <form method="post" action="https://script.google.com/macros/s/AKfycbykDmNAY6s70KQBKNRoKIKbl3yqHDQtOHx_hInqq1cNaNo9UvhwQdASGIGjSaYgaE23Yg/exec" name="cards-form">
-            <h4>Register Card</h4>
-            <input type="text" name="text" placeholder="Card Text">
-            <input type="text" name="part" placeholder="Part of Speech">
+    <form method="post" action="https://script.google.com/macros/s/AKfycbykDmNAY6s70KQBKNRoKIKbl3yqHDQtOHx_hInqq1cNaNo9UvhwQdASGIGjSaYgaE23Yg/exec" name="cards-form">
+        <h4>Register Card</h4>
+        <h5>Please only register a card once it's physically in the deck</h5>
+        <input type="text" name="text" placeholder="Card Text" required>
+        <input type="text" name="part" placeholder="Part of Speech" required>
+        <div class="checkbox-container">
             <input type="checkbox" name="stinky" value="x" id="stinky">
-                <label for="stinky">Inside Joke</label><br>
-            <input type="submit" value="Register Card" id="submit">
-        </form>
-    </div>
-</body>
+            <label for="stinky">Inside Joke</label>
+        </div>
+        <input type="submit" value="Register Card" id="submit">
+    </form>
 </body>
 </html>
