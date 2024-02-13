@@ -5,7 +5,6 @@ body {
 
 #header {
     color: white;
-
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -62,8 +61,14 @@ body {
 #myUL {
     list-style-type: none;
     padding: 10px; /* Adjust padding for the unordered list */
-    margin: 0;
     border-radius: 10px;
+    text-align: center;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    font-weight:normal;
+    font-size: 20px;
+    background-color: #343a40;
+    color: white;
 }
 
 #myUL li a {
@@ -103,14 +108,4 @@ body {
         text-align: center;
 
     }
-}
-.navbar {
-    text-align: center;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    font-weight:normal;
-    font-size: 20px;
-    background-color: #343a40;
-    color: white;
-    padding: 20px; /* Add padding to the navbar */
 }

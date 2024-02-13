@@ -23,7 +23,7 @@ function newCard(){
     selectedCard = CARDS[r];
 
     displayText = selectedCard.text;
-    displayLetter = "Letter: " + selectedCard.letter;
+    displayLetter = selectedCard.letter;
 
   } else {
     //Deny Repeat Cards
@@ -47,7 +47,7 @@ function newCard(){
   }
 
   textDisplay.innerHTML = displayText;
-  letterDisplay.innerHTML = displayLetter;
+  letterDisplay.innerHTML = "Letter: " + displayLetter;
   
 }
 
