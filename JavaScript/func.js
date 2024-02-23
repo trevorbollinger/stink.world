@@ -1,58 +1,55 @@
 
+
+function filterList() {
+  cardsu = CDS;
+  allowRepeats = repeatCB.checked;
+  stinkyCheck = stinkyCB.checked;
+
+  if (stinkyCheck) cardsu = cardsu.filter(card => !card.stinky);
+  if (!allowRepeats) cardsu = cardsu.filter(card => !card.drawn);
+
+  updaetDisplay();
+}
+
+function resetCards(){
+  cardsu = CDS;
+  updaetDisplay();
+}
+
 function newCard(){
   var display = document.getElementById("display");
   var textDisplay = document.getElementById("textDisplay");
   var letterDisplay = document.getElementById("letterDisplay");
 
-  var checkedValue = null; 
-  var inputElements = document.getElementsByClassName('messageCheckbox');
-
-  for(var i=0; inputElements[i]; ++i){
-      if(inputElements[i].checked){
-           checkedValue = inputElements[i].value;
-           break;
-      }
-  }
-
   display.style.display = "block";
 
-  if(checkedValue == "on"){
+  //r = 0;
+  r = randNum(cardsu.length);
+  selectedCard = cardsu[r];
+  selectedCard.drawn = true;
 
-    //Allow Repeat Cards
-    r = randNum(CARDS.length);
-    selectedCard = CARDS[r];
+  //update display
+  textDisplay.innerHTML = selectedCard.text;
+  letterDisplay.innerHTML = "Letter: " + selectedCard.letter;
+    console.log(cardsu[r].drawn);
 
-    displayText = selectedCard.text;
-    displayLetter = selectedCard.letter;
-
-  } else {
-    //Deny Repeat Cards
-
-    r = randNum(lng);
-
-    //update display
-    if(lng > 0){
-      selectedCard = cardsu[r];
-
-      displayText = selectedCard.text;
-      displayLetter = selectedCard.letter;
-
-    } else displayText = "Out of Cards!";
-
-    //remove selected card and shift remaining forward
-    for(i = r; i < lng; i++){
-      cardsu[i] = cardsu[i + 1];
-    }
-    lng--;
-  }
-
-  textDisplay.innerHTML = displayText;
-  letterDisplay.innerHTML = "Letter: " + displayLetter;
-  
+  filterList();
+  updaetDisplay();
 }
-
 function randNum(max){
   return Math.floor((Math.random() * max));
+}
+function updaetDisplay(){
+    
+    var listItems = "";
+    for (var i = 0; i < cardsu.length; i++) {
+        listItems += "<li><a href='#'>" + cardsu[i].text + "</a></li>";
+    }
+
+    var ul = document.getElementById('myUL');
+    ul.innerHTML = "";
+    ul.innerHTML += listItems;
+ 
 }
 
 function shuffle(array) {
