@@ -22,6 +22,7 @@
  <!-- Control Panel -->
     <div class="d-flex justify-content-center align-items-center my-3">
     <div class="hstack">
+        <button type="button" id="resetButton" onclick="toggleCollapsibleSection()" class="btn btn-danger mr-2">Hide List</button>
         <button type="button" id="resetButton" onclick="resetCards()" class="btn btn-danger mr-2">Reset Cards</button>
         <button type="button" id="randButton" onclick="newCard()" class="btn btn-primary mr-2">Draw Card</button>
         <div class="vstack">
@@ -38,21 +39,26 @@
     </div>
 </div>
 
+<!-- Card Display -->
+<div id="display">
+    <h3 id="textDisplay"></h3>
+    <h5 id="letterDisplay"></h5>
+</div> 
 
-
-
-    <!-- Card Display -->
-    <div id="display">
-            <h3 id="textDisplay"></h3>
-            <h5 id="letterDisplay"></h5>
-    </div>    
-
+  <!-- Collapsible Section -->
+<div class="collapsible-section" id="myCollapsibleSection">
     <!-- List -->
     <div id="main" class="standard">
      <input type="text" id="myInput" onkeyup="searchList()" placeholder="Search..">
          <ul id="myUL" class="navbar"></ul> 
         <br>
     </div>
+</div>
+
+
+     
+
+
 </body>
     <script src="JavaScript/func.js"></script>
     <script src="JavaScript/loadcards.js"></script>

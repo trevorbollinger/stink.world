@@ -1,4 +1,11 @@
-
+ function toggleCollapsibleSection() {
+      var section = document.getElementById("myCollapsibleSection");
+      if (section.style.display === "none") {
+        section.style.display = "block";
+      } else {
+        section.style.display = "none";
+      }
+    }
 
 function filterList() {
   cardsu = CDS;

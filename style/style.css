@@ -33,7 +33,10 @@ body {
 .form-check-label {
     color: white; /* Change the text color to white for visibility */
 }
-
+ /* Style for the collapsible section */
+    .collapsible-section {
+      display: block;
+    }
 #display {
     color: white;
     text-align: center;
