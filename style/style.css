@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'Product Sans';
-    src: url('fonts/Product Sans/ProductSans-Regular.woff') format('woff');
+    font-family: "Product Sans";
+    src: url("fonts/Product Sans/ProductSans-Regular.woff") format("woff");
     /* Add other font styles as needed */
 }
 
-*{
-    font-family: 'Product Sans', sans-serif;
+* {
+    font-family: "Product Sans", sans-serif;
 }
 
 body {
@@ -29,29 +29,67 @@ body {
     align-items: center; /* Add this line */
 }
 
-/* Checkbox Label */
 .form-check-label {
     color: white; /* Change the text color to white for visibility */
 }
- /* Style for the collapsible section */
-    .collapsible-section {
-      display: block;
-    }
-#display {
-    color: white;
-    text-align: center;
-    display: none;
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
+
+.collapsible-section {
+    display: block;
+}
+
+.display {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    border-radius: 15px;
-    background-color: #1a1a1a; 
-    padding: 10px; /* Add padding to the display */
+}
+
+#numDivs {
+    width: 50px;
+}
+
+.card {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 2px solid black;
+    margin-bottom: 8px;
+    margin-top: 9px;
+    width: 60%;
+    position: relative;
+}
+
+.arrow-container {
+    position: absolute;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    top: 0; /* Align arrows to the top of the card */
+}
+
+.arrow {
+    cursor: pointer;
+    margin: 5px 0; /* Adjust arrow spacing */
+}
+
+.display-container {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.textDisplay {
+    margin: 0;
+}
+
+.letterDisplay {
+    margin: 0;
 }
 
 .standard {
-    background-color: rgba(255,255,255,0);
+    background-color: rgba(255, 255, 255, 0);
     color: #dcdcdc;
     padding: 10px; /* Adjust padding for the standard class */
     width: 100%;
@@ -80,7 +118,7 @@ body {
     text-align: center;
     margin: 0 auto;
     font-family: Arial, sans-serif;
-    font-weight:normal;
+    font-weight: normal;
     font-size: 20px;
     background-color: #343a40;
     color: white;
@@ -131,7 +169,7 @@ body {
         padding: 0px;
     }
     #myInput {
-        height:50px;
+        height: 50px;
     }
     #myUL li a {
         padding: 5px;
@@ -140,15 +178,12 @@ body {
         flex-direction: column;
         align-items: center;
         padding-top: 10px;
-
     }
     #display {
         display: block;
         margin-left: 0 auto;
         margin-right: 0 auto;
-        text-align: center;   
-         width: 80%;
-
-
+        text-align: center;
+        width: 80%;
     }
 }

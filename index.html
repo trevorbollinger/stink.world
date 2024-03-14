@@ -1,67 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>stink.world</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <script lang="javascript" src="dist/xlsx.core.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
 </head>
 
 <body>
-   
- <!-- Control Panel -->
+    <!-- Control Panel -->
     <div class="d-flex justify-content-center align-items-center my-3">
-    <div class="hstack">
-        <button type="button" id="resetButton" onclick="toggleCollapsibleSection()" class="btn btn-danger mr-2">Hide List</button>
-        <button type="button" id="resetButton" onclick="resetCards()" class="btn btn-danger mr-2">Reset Cards</button>
-        <button type="button" id="randButton" onclick="newCard()" class="btn btn-primary mr-2">Draw Card</button>
-        <div class="vstack">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="uniqueCheck" onclick="filterList()">
-                <label class="form-check-label" for="uniqueCheck">Allow Repeat Cards</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="stinkyCheck" onclick="filterList()">
-                <label class="form-check-label" for="stinkyCheck">Remove Inside Jokes</label>
+        <div class="hstack">
+            <button type="button" id="resetButton" onclick="toggleCollapsibleSection()" class="btn btn-danger mr-2">
+                Hide List
+            </button>
+            <!-- <button
+                    type="button"
+                    id="resetButton"
+                    onclick="resetCards()"
+                    class="btn btn-danger mr-2"
+                >
+                    Reset Cards -->
+            </button>
+            <button type="button" id="randButton" onclick="drawCards()" class="btn btn-primary mr-2">
+                Draw Cards
+            </button>
+            <input type="number" id="numDivs" value="1" min="1" />
+
+            <div class="vstack">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="uniqueCheck" onclick="filterList()" />
+                    <label class="form-check-label" for="uniqueCheck">Allow Repeat Cards</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="stinkyCheck" onclick="filterList()" />
+                    <label class="form-check-label" for="stinkyCheck">Remove Inside Jokes</label>
+                </div>
             </div>
         </div>
-
     </div>
-</div>
 
-<!-- Card Display -->
-<div id="display">
-    <h3 id="textDisplay"></h3>
-    <h5 id="letterDisplay"></h5>
-</div> 
+    <!-- Card Display -->
+    <div id="display"></div>
 
-  <!-- Collapsible Section -->
-<div class="collapsible-section" id="myCollapsibleSection">
-    <!-- List -->
-    <div id="main" class="standard">
-     <input type="text" id="myInput" onkeyup="searchList()" placeholder="Search..">
-         <ul id="myUL" class="navbar"></ul> 
-        <br>
+    <!-- Collapsible Section -->
+    <div class="collapsible-section" id="myCollapsibleSection">
+        <!-- List -->
+        <div id="main" class="standard">
+            <input type="text" id="myInput" onkeyup="searchList()" placeholder="Search.." />
+            <ul id="myUL" class="navbar"></ul>
+            <br />
+        </div>
     </div>
-</div>
-
-
-     
-
-
 </body>
-    <script src="JavaScript/func.js"></script>
-    <script src="JavaScript/loadcards.js"></script>
-        <script src="JavaScript/main.js"></script>
+<script src="JavaScript/func.js"></script>
+<script src="JavaScript/loadcards.js"></script>
+<script src="JavaScript/main.js"></script>
 
 </html>
