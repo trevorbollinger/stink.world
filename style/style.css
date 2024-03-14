@@ -43,7 +43,8 @@ body {
     justify-content: center;
 }
 
-#numDivs {
+#numDivs,
+.numDivs {
     width: 50px;
 }
 
