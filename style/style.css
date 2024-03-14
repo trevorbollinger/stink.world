@@ -180,7 +180,7 @@ body {
         padding-top: 10px;
     }
     #display {
-        display: block;
+        display: none;
         margin-left: 0 auto;
         margin-right: 0 auto;
         text-align: center;
