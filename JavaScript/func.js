@@ -34,8 +34,10 @@ function drawCards() {
     // Dynamically create card elements
     var card = document.createElement("div");
     var arrowContainer = document.createElement("div");
+    var rsContainer = document.createElement("div");
     var upArrow = document.createElement("span");
     var downArrow = document.createElement("span");
+    var refreshButton = document.createElement("button"); // New refresh button
     var displayContainer = document.createElement("div");
     var textDisplay = document.createElement("h3");
     var letterDisplay = document.createElement("h5");
@@ -43,19 +45,27 @@ function drawCards() {
     // Set class names for elements
     card.className = "card";
     arrowContainer.className = "arrow-container";
+    rsContainer.className = "rs-container";
     upArrow.className = "arrow";
     downArrow.className = "arrow";
+    refreshButton.className = "refresh"; // New refresh button class
     displayContainer.className = "display-container";
     textDisplay.className = "textDisplay";
     letterDisplay.className = "letterDisplay";
 
-    // Set arrow text content
+    // Set arrow and refresh button text content
     upArrow.textContent = "↑";
     downArrow.textContent = "↓";
+    refreshButton.textContent = "↻"; // New refresh button text
 
-    // Set arrow onclick handlers
+    // Set arrow and refresh button onclick handlers
     upArrow.onclick = createMoveUpFunction(card);
     downArrow.onclick = createMoveDownFunction(card);
+    refreshButton.onclick = createRefreshFunction(
+      card,
+      textDisplay,
+      letterDisplay,
+    ); // New refresh button onclick handler
 
     // Select card
     var r = randNum(cardsu.length);
@@ -72,18 +82,35 @@ function drawCards() {
     // Append elements to their containers
     arrowContainer.appendChild(upArrow);
     arrowContainer.appendChild(downArrow);
+    rsContainer.appendChild(refreshButton); // Append refresh button to arrow container
     displayContainer.appendChild(textDisplay);
     displayContainer.appendChild(letterDisplay);
 
     // Append containers to card
     card.appendChild(arrowContainer);
     card.appendChild(displayContainer);
+    card.appendChild(rsContainer);
 
     // Append card to display
     display.appendChild(card);
   }
 
   updaetDisplay();
+}
+
+function createRefreshFunction(card, textDisplay, letterDisplay) {
+  return function () {
+    var r = randNum(cardsu.length);
+    var selectedCard = cardsu[r];
+    selectedCard.drawn = true;
+    filterList();
+
+    // Update text display content
+    textDisplay.innerHTML = selectedCard.text;
+
+    // Update letter display content
+    letterDisplay.innerHTML = "Letter: " + selectedCard.letter;
+  };
 }
 
 function createMoveUpFunction(item) {

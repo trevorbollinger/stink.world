@@ -71,6 +71,17 @@ body {
     top: 0; /* Align arrows to the top of the card */
 }
 
+.rs-container {
+    position: absolute;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    top: 0; /* Align arrows to the top of the card */
+}
+
 .arrow {
     cursor: pointer;
     margin: 5px 0; /* Adjust arrow spacing */
